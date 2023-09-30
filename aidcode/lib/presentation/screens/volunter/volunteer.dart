@@ -1,3 +1,4 @@
+import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class VolunteerScreen extends StatelessWidget {
@@ -6,10 +7,11 @@ class VolunteerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
+      body: CustomScrollView(
+        slivers: [
+          sliverAppBar(),
+        ],
       ),
-      body: Text("Volunter"),
     );
   }
 }
