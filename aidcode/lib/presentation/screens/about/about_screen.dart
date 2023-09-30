@@ -10,24 +10,23 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context,
-          leading: SizedBox(
-            child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Image.asset(AppAssets.imageUserProfileMock)),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: IconButton(
-                icon: const Icon(Icons.close,
-                    color: AppColor.secondary, size: 26),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
+      appBar: appBar(
+        context,
+        automaticallyImplyLeading: false,
+        leading: const SizedBox(),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: IconButton(
+              icon:
+                  const Icon(Icons.close, color: AppColor.secondary, size: 26),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
-          ]),
+          ),
+        ],
+      ),
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: SizedBox(
