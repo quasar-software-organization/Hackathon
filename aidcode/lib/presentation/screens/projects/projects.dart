@@ -1,4 +1,5 @@
 import 'package:aidcode/domain/entities/proyect_entity.dart';
+import 'package:aidcode/presentation/screens/about/about_screen.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:aidcode/resources/resources.dart';
@@ -14,18 +15,20 @@ class ProjectsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          sliverAppBar(
-            context,
-            onBack: () {
-              context.pop();
-            },
-            leading: InkWell(
-              onTap: () {
-                context.goNamed(MyRoutes.volunteer.name);
+          sliverAppBar(context,
+              onBack: () {
+                context.pop();
               },
-              child: Image.asset(AppAssets.imageUserProfileMock),
-            ),
-          ),
+              leading: InkWell(
+                onTap: () {
+                  context.goNamed(MyRoutes.volunteer.name);
+                },
+                child: Image.asset(AppAssets.imageUserProfileMock),
+              ),
+              onPressInfo: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const AboutUsScreen()));
+              }),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {

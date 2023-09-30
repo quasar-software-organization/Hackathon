@@ -10,11 +10,14 @@ void main() {
     expect(File(AppAssets.americanCancer).existsSync(), isTrue);
     expect(File(AppAssets.americanCancerSociety).existsSync(), isTrue);
     expect(File(AppAssets.americanCancerSocietyIcon).existsSync(), isTrue);
+    expect(File(AppAssets.facebook).existsSync(), isTrue);
     expect(File(AppAssets.habitadDenver).existsSync(), isTrue);
     expect(File(AppAssets.habitadRestore).existsSync(), isTrue);
     expect(File(AppAssets.habitatHumanity).existsSync(), isTrue);
     expect(File(AppAssets.imageUserProfileBig).existsSync(), isTrue);
     expect(File(AppAssets.imageUserProfileMock).existsSync(), isTrue);
+    expect(File(AppAssets.instagram).existsSync(), isTrue);
+    expect(File(AppAssets.linkedin).existsSync(), isTrue);
     expect(File(AppAssets.logoAidcodePng).existsSync(), isTrue);
     expect(File(AppAssets.miniLogo).existsSync(), isTrue);
     expect(File(AppAssets.wwfLogo).existsSync(), isTrue);
