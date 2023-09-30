@@ -2,6 +2,7 @@ import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class NonProfitsScreen extends StatelessWidget {
   const NonProfitsScreen({super.key});
@@ -15,6 +16,9 @@ class NonProfitsScreen extends StatelessWidget {
           slivers: [
             sliverAppBar(
               context,
+              onBack: () {
+                context.pop();
+              },
               onPressMenu: () {},
             ),
             const SliverToBoxAdapter(
