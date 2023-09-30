@@ -6,7 +6,7 @@ part 'volunteer.g.dart';
 @freezed
 class Volunteer with _$Volunteer {
   const factory Volunteer({
-    required String id,
+    String? id,
     required String name,
     required int age,
     // This is measure in hours by day

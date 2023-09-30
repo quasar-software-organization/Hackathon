@@ -6,7 +6,7 @@ part 'non_profit.g.dart';
 @freezed
 class NonProfit with _$NonProfit {
   const factory NonProfit({
-    required String id,
+    String? id,
     required String name,
     required String missionAndVision,
   }) = _NonProfit;
