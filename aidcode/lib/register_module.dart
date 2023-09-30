@@ -8,7 +8,10 @@ abstract class RegisterModule {
   FirebaseFirestore get instance => FirebaseFirestore.instance;
 
   @Named("LinkedinApiBaseUrl")
-  String get baseUrl => 'https://api.linkedin.com';
+  String get linkedinBaseUrl => 'https://api.linkedin.com';
+
+  @Named("GithubApiBaseUrl")
+  String get githubBaseUrl => 'https://api.github.com';
 
   @lazySingleton
   @Named("LinkedinDio")
@@ -21,6 +24,23 @@ abstract class RegisterModule {
               const String.fromEnvironment('LINKEDIN_AUTHORIZATION'),
           'Content-Type': 'application/json',
           'X-RestLi-Protocol-Version': '2.0.0',
+        },
+      ),
+    );
+
+    return dio;
+  }
+
+  @lazySingleton
+  @Named("GithubDio")
+  Dio githubDioProvider(@Named('GithubApiBaseUrl') String url) {
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: url,
+        headers: {
+          'Authorization':
+              const String.fromEnvironment('GITHUB_AUTHORIZATION'),
+          'Content-Type': 'application/json',
         },
       ),
     );
