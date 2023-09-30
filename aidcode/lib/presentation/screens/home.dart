@@ -1,3 +1,4 @@
+import 'package:aidcode/data/model/volunteer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
