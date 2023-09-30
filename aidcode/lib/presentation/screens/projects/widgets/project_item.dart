@@ -15,7 +15,7 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context.goNamed(MyRoutes.projectDetail.name,
+      onTap: () => context.pushNamed(MyRoutes.projectDetail.name,
           pathParameters: {"id": project.id ?? "0"}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
