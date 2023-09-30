@@ -7,14 +7,15 @@ class ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return Container(
       margin: EdgeInsets.all(size.width * 0.05),
       height: size.height,
       width: size.width,
-      decoration: BoxDecoration(color: Colors.orange, borderRadius: BorderRadius.circular(8)),
+      decoration: BoxDecoration(color: scheme.primary, borderRadius: BorderRadius.circular(8)),
       child: Container(
         margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(color: scheme.background, borderRadius: BorderRadius.circular(8)),
       ),
     );
   }

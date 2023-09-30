@@ -9,7 +9,8 @@ class ProfileOptionBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = const TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
+    final scheme = Theme.of(context).colorScheme;
+    const textStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
@@ -17,7 +18,7 @@ class ProfileOptionBottom extends StatelessWidget {
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: scheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

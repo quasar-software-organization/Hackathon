@@ -1,3 +1,4 @@
+import 'package:aidcode/core/theme/light.dart';
 import 'package:aidcode/injection_container.dart';
 import 'package:aidcode/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,10 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'AidCode',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: light(context),
       routerConfig: AppRoute.routes,
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
