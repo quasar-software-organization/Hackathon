@@ -1,3 +1,4 @@
+import 'package:aidcode/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProfileDonate extends StatelessWidget {
@@ -5,13 +6,11 @@ class ProfileDonate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
     return SingleChildScrollView(
       child: Column(
         children: [
-          Divider(
-            thickness: 4,
-            color: Colors.blue.shade800,
-          ),
+          const Divider(thickness: 4, color: AppColor.secondary),
           SizedBox(
             height: 100,
             child: Center(
@@ -21,7 +20,7 @@ class ProfileDonate extends StatelessWidget {
                 child: MaterialButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   onPressed: () {},
-                  color: Colors.orange,
+                  color: scheme.primary,
                   child: const Text(
                     "Donate",
                     style: TextStyle(fontSize: 24),

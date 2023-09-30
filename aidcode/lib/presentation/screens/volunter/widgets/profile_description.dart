@@ -10,7 +10,7 @@ class ProfileDescription extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Text("Description", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
+          const Text("Description", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: RichReadMoreText.fromString(
