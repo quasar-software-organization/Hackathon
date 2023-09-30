@@ -1,3 +1,4 @@
+import 'package:aidcode/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProfileOptionBottom extends StatelessWidget {
@@ -10,26 +11,39 @@ class ProfileOptionBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    const textStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        width: 100,
-        height: 100,
-        decoration: BoxDecoration(
-          color: scheme.primary,
-          borderRadius: BorderRadius.circular(12),
+    const textStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: AppColor.secondary);
+    return LayoutBuilder(builder: (context, constrains) {
+      return InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 80,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: scheme.primary,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(child: Text(title, style: textStyle)),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Text(
+                  subtitle ?? "",
+                  style: textStyle,
+                ),
+              )
+            ],
+          ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(title, style: textStyle),
-            Text(subtitle ?? "", style: textStyle),
-          ],
-        ),
-      ),
-    );
+      );
+    });
   }
 }

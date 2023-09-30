@@ -15,7 +15,10 @@ class ProfileAvatar extends StatelessWidget {
       decoration: BoxDecoration(color: scheme.primary, borderRadius: BorderRadius.circular(8)),
       child: Container(
         margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(color: scheme.background, borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+          color: scheme.background,
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
     );
   }
