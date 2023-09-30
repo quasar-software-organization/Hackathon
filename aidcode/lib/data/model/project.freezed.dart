@@ -128,6 +128,7 @@ class __$$ProjectImplCopyWithImpl<$Res>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? status = null,
+    Object? nonProfitId = null,
   }) {
     return _then(_$ProjectImpl(
       id: freezed == id
@@ -154,6 +155,10 @@ class __$$ProjectImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      nonProfitId: null == status
+          ? _value.nonProfitId
+          : nonProfitId // ignore: cast_nullable_to_non_nullable
+      as String,
     ));
   }
 }
@@ -167,7 +172,8 @@ class _$ProjectImpl implements _Project {
       required this.description,
       this.startDate,
       this.endDate,
-      required this.status});
+      required this.status,
+      required String this.nonProfitId});
 
   factory _$ProjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProjectImplFromJson(json);
@@ -184,10 +190,12 @@ class _$ProjectImpl implements _Project {
   final DateTime? endDate;
   @override
   final String status;
+  @override
+  final String nonProfitId;
 
   @override
   String toString() {
-    return 'Project(id: $id, name: $name, description: $description, startDate: $startDate, endDate: $endDate, status: $status)';
+    return 'Project(id: $id, name: $name, description: $description, startDate: $startDate, endDate: $endDate, status: $status, nonProfitId: $nonProfitId)';
   }
 
   @override
@@ -202,13 +210,14 @@ class _$ProjectImpl implements _Project {
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.nonProfitId, nonProfitId) || other.nonProfitId == nonProfitId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, description, startDate, endDate, status);
+      runtimeType, id, name, description, startDate, endDate, status, nonProfitId);
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +240,8 @@ abstract class _Project implements Project {
       required final String description,
       final DateTime? startDate,
       final DateTime? endDate,
-      required final String status}) = _$ProjectImpl;
+      required final String status,
+      required String nonProfitId}) = _$ProjectImpl;
 
   factory _Project.fromJson(Map<String, dynamic> json) = _$ProjectImpl.fromJson;
 
