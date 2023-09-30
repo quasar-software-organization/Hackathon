@@ -8,7 +8,7 @@ class NonProfit with _$NonProfit {
   const factory NonProfit({
     String? id,
     required String name,
-    required String missionAndVision,
+    required String missionAndVission,
   }) = _NonProfit;
 
   factory NonProfit.fromJson(Map<String, Object?> json) =>

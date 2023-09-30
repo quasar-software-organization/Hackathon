@@ -16,6 +16,10 @@ class RepositoryImpl implements Repository {
   Future<List<Project>> getNonProfitsProjects({required String nonProfitId}) async {
     return await fs.getNonProfitProjects(nonProfitId);
   }
+  @override
+  Future<NonProfit> getNonProfit({required String nonProfitId}) async {
+    return await fs.getNonProfit(nonProfitId);
+  }
 
   @override
   Future<Project> getProject({required String id}) async {

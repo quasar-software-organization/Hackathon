@@ -20,7 +20,11 @@ class NonProfitBloc extends Bloc<NonProfitEvent, NonProfitState> {
     on<NonProfitEvent>(
       (event, emit) async {
         await event.when(
-          init: () async {},
+          init: () async {
+            NonProfit profit = await repo.getNonProfit(nonProfitId: "3yxz1XgeNc6yRmeGaukC");
+            emit(state.copyWith(nonProfit: profit, hasInitialized: true));
+            add(NonProfitEvent.getNonProfitsProjects(nonProfitId: profit.id ?? ""));
+          },
           putNonProfit: (nonProfit) async {},
           getNonProfitsProjects: (nonProfitId) async {
             List<Project> projects = await repo.getNonProfitsProjects(nonProfitId: nonProfitId);
