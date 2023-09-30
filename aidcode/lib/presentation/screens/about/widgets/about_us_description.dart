@@ -41,17 +41,18 @@ class AboutUsDescription extends StatelessWidget {
           ),
           TextSpan(
             text:
-                ''' is an innovative app that seeks to help NGOs in the United States of America and around the world.
-                  \n It is developed by cuasar software, ''',
+                ''' is an innovative app that seeks to help Non Profit organizations
+                 in the United States of America and around the world.
+                  \n It is developed by''',
           ),
           TextSpan(
-            text: 'cuasar software, ',
+            text: 'Quasar Software, ',
             style: TextStyle(
                 color: AppColor.secondary, fontWeight: FontWeight.w600),
           ),
           TextSpan(
-            text:
-                'a company formed by a group of talented young people motivated to help the well-being of people in the digital area.',
+            text: 'a freelancing group composed of talented young developers,'
+                'designers and entrepreneurs ',
           ),
         ]));
   }
