@@ -1,43 +1,6 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
-
-class ProjectScreen extends StatelessWidget {
-  const ProjectScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColor.scaffold,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              const SizedBox.square(dimension: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(AppAssets.imageUserProfileMock),
-                  Image.asset(AppAssets.logoAidcodePng, height: 60),
-                  const Icon(Icons.menu, color: AppColor.secondary)
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return const ProjectCard();
-                  },
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
     super.key,
@@ -115,19 +78,19 @@ class ProjectCard extends StatelessWidget {
                 children: [
                   Row(
                     children: List.generate(
-                            4,
+                        4,
                             (index) =>
-                                Image.asset(AppAssets.imageUserProfileMock))
+                            Image.asset(AppAssets.imageUserProfileMock))
                         .toList(),
                   ),
                   const SizedBox.square(dimension: 5.0),
                   const Text('+23',
                       style:
-                          TextStyle(color: AppColor.secondary, fontSize: 24)),
+                      TextStyle(color: AppColor.secondary, fontSize: 24)),
                   const Spacer(),
                   const Text('may/3',
                       style:
-                          TextStyle(color: AppColor.secondary, fontSize: 14)),
+                      TextStyle(color: AppColor.secondary, fontSize: 14)),
                 ],
               )
             ],
