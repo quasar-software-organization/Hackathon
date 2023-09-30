@@ -12,6 +12,7 @@ class Project with _$Project {
     DateTime? startDate,
     DateTime? endDate,
     required String status,
+    required String nonProfitId,
   }) = _Project;
 
   factory Project.fromJson(Map<String, Object?> json) =>
