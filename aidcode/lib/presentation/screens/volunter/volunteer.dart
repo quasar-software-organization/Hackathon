@@ -33,12 +33,6 @@ class VolunteerScreen extends StatelessWidget {
             child: ProfileJob(),
           ),
           const SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            sliver: SliverToBoxAdapter(
-              child: ProfileDescription(),
-            ),
-          ),
-          const SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
             sliver: SliverToBoxAdapter(
               child: Column(
@@ -58,6 +52,12 @@ class VolunteerScreen extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            sliver: SliverToBoxAdapter(
+              child: ProfileDescription(),
             ),
           ),
         ],
