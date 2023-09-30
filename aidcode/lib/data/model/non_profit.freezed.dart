@@ -20,7 +20,7 @@ NonProfit _$NonProfitFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NonProfit {
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get missionAndVision => throw _privateConstructorUsedError;
 
@@ -35,7 +35,7 @@ abstract class $NonProfitCopyWith<$Res> {
   factory $NonProfitCopyWith(NonProfit value, $Res Function(NonProfit) then) =
       _$NonProfitCopyWithImpl<$Res, NonProfit>;
   @useResult
-  $Res call({String id, String name, String missionAndVision});
+  $Res call({String? id, String name, String missionAndVision});
 }
 
 /// @nodoc
@@ -51,15 +51,15 @@ class _$NonProfitCopyWithImpl<$Res, $Val extends NonProfit>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? missionAndVision = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -80,7 +80,7 @@ abstract class _$$NonProfitImplCopyWith<$Res>
       __$$NonProfitImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String missionAndVision});
+  $Res call({String? id, String name, String missionAndVision});
 }
 
 /// @nodoc
@@ -94,15 +94,15 @@ class __$$NonProfitImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? missionAndVision = null,
   }) {
     return _then(_$NonProfitImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -119,13 +119,13 @@ class __$$NonProfitImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NonProfitImpl implements _NonProfit {
   const _$NonProfitImpl(
-      {required this.id, required this.name, required this.missionAndVision});
+      {this.id, required this.name, required this.missionAndVision});
 
   factory _$NonProfitImpl.fromJson(Map<String, dynamic> json) =>
       _$$NonProfitImplFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String name;
   @override
@@ -167,7 +167,7 @@ class _$NonProfitImpl implements _NonProfit {
 
 abstract class _NonProfit implements NonProfit {
   const factory _NonProfit(
-      {required final String id,
+      {final String? id,
       required final String name,
       required final String missionAndVision}) = _$NonProfitImpl;
 
@@ -175,7 +175,7 @@ abstract class _NonProfit implements NonProfit {
       _$NonProfitImpl.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
   String get name;
   @override
