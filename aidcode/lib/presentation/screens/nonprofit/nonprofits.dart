@@ -19,7 +19,7 @@ class NonProfitsScreen extends StatelessWidget {
               onBack: () {
                 context.pop();
               },
-              onPressMenu: () {},
+              onPressInfo: () {},
             ),
             const SliverToBoxAdapter(
               child: Center(

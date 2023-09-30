@@ -5,13 +5,13 @@ sliverAppBar(
   BuildContext context, {
   Widget? leading,
   Widget? training,
-  VoidCallback? onPressMenu,
+  VoidCallback? onPressInfo,
   VoidCallback? onBack,
 }) {
   final size = MediaQuery.of(context).size;
   final canPop = Navigator.of(context).canPop();
   return SliverAppBar(
-    leading: SizedBox(),
+    leading: const SizedBox(),
     floating: true,
     snap: true,
     expandedHeight: 100,
@@ -49,8 +49,8 @@ sliverAppBar(
               width: size.width * 0.28,
               child: training ??
                   IconButton(
-                    icon: const Icon(Icons.menu, size: 40),
-                    onPressed: onPressMenu,
+                    icon: const Icon(Icons.info_outline, size: 40),
+                    onPressed: onPressInfo,
                   ),
             ),
           ],
