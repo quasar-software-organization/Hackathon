@@ -13,7 +13,7 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
-      onTap: () => showCupertinoModalPopup(context: context, builder: (_) => ProjectDetail()),
+      onTap: () => showCupertinoModalPopup(context: context, builder: (_) => const ProjectDetail()),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -53,7 +53,7 @@ class ProjectCard extends StatelessWidget {
                           child: const Row(
                             children: [
                               Expanded(
-                                child: Text('I need an engineer to develop an ap sasasp',
+                                child: Text('I need an engineer to develop an app',
                                     style: TextStyle(color: AppColor.secondary), overflow: TextOverflow.clip, maxLines: 2),
                               ),
                             ],
