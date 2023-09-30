@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:rich_readmore/rich_readmore.dart';
 
 class ProfileDescription extends StatelessWidget {
-  const ProfileDescription({super.key});
+  const ProfileDescription({super.key, required this.description});
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return   Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: RichReadMoreText.fromString(
-        text: "I am a designer who is passionate about technology and the web world." * 20,
+        text: description,
         textStyle: const TextStyle(color: AppColor.secondary, fontSize: 16),
         settings: LengthModeSettings(
           trimLength: 200,
@@ -26,9 +28,7 @@ class ProfileDescription extends StatelessWidget {
           lessStyle: TextStyle(color: scheme.primary),
           moreStyle: TextStyle(color: scheme.primary),
         ),
-
       ),
-
     );
   }
 }
