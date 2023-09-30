@@ -5,8 +5,14 @@ import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:aidcode/domain/repositories/repository.dart';
 import 'package:injectable/injectable.dart';
 
+import '../datasources/firestore_service.dart';
+
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
+  final FirestoreService fs;
+
+  RepositoryImpl(this.fs);
+
   @override
   Future<List<Project>> getNonProfitsProjects(
       {required String nonProfitId}) async {
@@ -28,14 +34,12 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<Volunteer> getVolunteer({required String id}) async {
-    // TODO: implement getVolunteer
-    throw UnimplementedError();
+    return fs.getVolunteer(id);
   }
 
   @override
   Future<List<Project>> getVolunteerProject({required String id}) async {
-    // TODO: implement getVolunteerProject
-    throw UnimplementedError();
+    return fs.getVolunteerProjects(id);
   }
 
   @override
