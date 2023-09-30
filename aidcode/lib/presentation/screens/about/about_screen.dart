@@ -32,11 +32,7 @@ class AboutUsScreen extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            children: [
-              AboutUsDescription(),
-              SizedBox.square(dimension: 20.0),
-              LinksSection()
-            ],
+            children: [AboutUsDescription(), SizedBox.square(dimension: 20.0), LinksSection()],
           ),
         ),
       ),
@@ -56,17 +52,10 @@ class LinksSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('Links',
-              style: TextStyle(
-                  color: AppColor.primary,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold)),
-          linkValue(
-              image: AppAssets.linkedin, link: 'linkedin.com/aidcode/repo'),
-          linkValue(
-              image: AppAssets.facebook, link: 'facebook.com/aidcode/repo'),
-          linkValue(
-              image: AppAssets.instagram, link: 'instagram.com/aidcode/repo'),
+          const Text('Links', style: TextStyle(color: AppColor.primary, fontSize: 24, fontWeight: FontWeight.bold)),
+          linkValue(image: AppAssets.linkedin, link: 'linkedin.com/aidcode/repo'),
+          linkValue(image: AppAssets.facebook, link: 'facebook.com/aidcode/repo'),
+          linkValue(image: AppAssets.instagram, link: 'instagram.com/aidcode/repo'),
         ],
       ),
     );
