@@ -40,24 +40,26 @@ class ProjectCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox.square(dimension: 10.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .5,
-                          child: Text(project.name,
-                              style: const TextStyle(
-                                color: AppColor.secondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.clip),
-                        ),
-                        _detailSection(title: 'Type', subtitle: project.description),
-                        _detailSection(title: 'Need', subtitle: project.tag),
-                      ],
-                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .5,
+                            child: Text(project.name,
+                                style: const TextStyle(
+                                  color: AppColor.secondary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 23,
+                                ),
+                                maxLines: 2,
+                                overflow: TextOverflow.clip),
+                          ),
+                          _detailSection(title: 'Type', subtitle: project.description),
+                          _detailSection(title: 'Need', subtitle: project.tag),
+                        ],
+                      ),
+                    )
                   ],
                 ),
                 // const SizedBox.square(dimension: 10.0),
