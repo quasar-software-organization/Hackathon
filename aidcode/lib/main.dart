@@ -22,7 +22,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
 
-  FirestoreService fs = FirestoreService(FirebaseFirestore.instance);
+  FirestoreService fs = FirestoreService(getIt<FirebaseFirestore>());
 
   FlutterNativeSplash.remove();
 

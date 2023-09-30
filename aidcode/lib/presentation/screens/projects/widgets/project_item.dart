@@ -1,7 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/data/model/project.dart';
-
-import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/resources/resources.dart';
 
 import 'package:aidcode/routes.dart';
@@ -62,8 +60,8 @@ class ProjectCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox.square(dimension: 10.0),
-                const MultipleUser()
+                // const SizedBox.square(dimension: 10.0),
+                // const MultipleUser()
               ],
             ),
           ),

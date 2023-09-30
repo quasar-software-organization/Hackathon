@@ -2,7 +2,9 @@ import 'package:aidcode/core/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 class ProfileJob extends StatelessWidget {
-  const ProfileJob({super.key});
+  const ProfileJob({super.key, required this.availability});
+
+  final String availability;
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +18,15 @@ class ProfileJob extends StatelessWidget {
           width: size.width * 0.7,
           child: MaterialButton(
             elevation: 0,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             onPressed: () {},
             color: scheme.primary,
-            child: const Text(
-              "Flutter Developer",
-              style: TextStyle(fontSize: 24, color: AppColor.secondary),
+            child: FittedBox(
+              child: Text(
+                'Availability: $availability',
+                style: const TextStyle(fontSize: 24, color: AppColor.secondary),
+              ),
             ),
           ),
         ),
