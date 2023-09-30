@@ -5,6 +5,8 @@ import 'package:aidcode/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../data/model/project.dart';
+
 class ProjectsScreen extends StatelessWidget {
   const ProjectsScreen({Key? key}) : super(key: key);
 
@@ -28,9 +30,18 @@ class ProjectsScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return const ProjectCard();
+                const fake = Project(
+                  name: "name",
+                  description: "description",
+                  status: "status",
+                  nonProfitId: "nonProfitId",
+                );
+
+                return const ProjectCard(
+                  project: fake,
+                );
               },
-              childCount: 20, // Número de elementos en la lista
+              childCount: 5, // Número de elementos en la lista
             ),
           ),
         ],

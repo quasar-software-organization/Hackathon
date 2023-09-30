@@ -1,4 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
+import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:aidcode/routes.dart';
@@ -6,15 +7,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key});
+  final Project project;
+
+  const ProjectCard({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context
-          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": "1"}),
+      onTap: () => context.goNamed(MyRoutes.projectDetail.name,
+          pathParameters: {"id": project.id!}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -42,21 +45,17 @@ class ProjectCard extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .5,
-                          child: const Text('Habitat for Humanity',
-                              style: TextStyle(
+                          child: Text(project.name,
+                              style: const TextStyle(
                                 color: AppColor.secondary,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 23,
                               ),
-                              maxLines:
-                                  2, // Establece el número máximo de líneas en 2
-                              overflow: TextOverflow
-                                  .clip // Usa elipsis (...) si el texto se desborda
-                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.clip),
                         ),
-                        _detailSection(title: 'Type', subtitle: 'Environment'),
-                        _detailSection(title: 'Need', subtitle: 'webapp'),
-                        _detailSection(title: 'Date', subtitle: '7/21/2023'),
+                        _detailSection(title: 'Type', subtitle: project.description),
+                        _detailSection(title: 'Need', subtitle: project.tag),
                       ],
                     ),
                   ],
