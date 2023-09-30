@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 abstract class LinkedinDatasource {
   Future<void> createPost(
       {required String title,
@@ -5,6 +7,7 @@ abstract class LinkedinDatasource {
       required String nonProfitName});
 }
 
+@Injectable(as: LinkedinDatasource)
 class LinkedinDatasourceImpl implements LinkedinDatasource {
   @override
   Future<void> createPost(
