@@ -12,16 +12,20 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+import 'data/repositories/repositories_impl.dart' as _i4;
+import 'domain/repositories/repository.dart' as _i3;
+
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
   _i1.GetIt getIt, {
   String? environment,
   _i2.EnvironmentFilter? environmentFilter,
 }) {
-  _i2.GetItHelper(
+  final gh = _i2.GetItHelper(
     getIt,
     environment,
     environmentFilter,
   );
+  gh.factory<_i3.Repository>(() => _i4.RepositoryImpl());
   return getIt;
 }
