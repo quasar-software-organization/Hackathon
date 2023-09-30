@@ -37,6 +37,7 @@ class ProjectsScreen extends StatelessWidget {
                   child: Image.asset(AppAssets.imageUserProfileMock),
                 ),
               ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
               state.hasInitialized
                   ? SliverList(
                       delegate: SliverChildBuilderDelegate(

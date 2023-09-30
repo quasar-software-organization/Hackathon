@@ -15,53 +15,55 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context.goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": project.id ?? "0"}),
+      onTap: () => context.goNamed(MyRoutes.projectDetail.name,
+          pathParameters: {"id": project.id ?? "0"}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
-          child: Padding(
+        child: Card(
+          color: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          child: Container(
+            height: 180,
             padding: const EdgeInsets.all(12.0),
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.secondary, width: 4),
-                        borderRadius: BorderRadius.circular(12),
-                        image: const DecorationImage(
-                          image: AssetImage(AppAssets.americanCancerSociety),
+                Container(
+                  height: double.maxFinite,
+                  width: 150,
+                  padding: const EdgeInsets.all(4.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColor.secondary, width: 4),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Image.asset(AppAssets.americanCancerSociety,
+                      fit: BoxFit.fill),
+                ),
+                const SizedBox.square(dimension: 10.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          project.name,
+                          style: const TextStyle(
+                            color: AppColor.secondary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 23,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                    ),
-                    const SizedBox.square(dimension: 10.0),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width * .5,
-                          child: Text(project.name,
-                              style: const TextStyle(
-                                color: AppColor.secondary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.clip),
-                        ),
-                        _detailSection(title: 'Type', subtitle: project.description),
-                        _detailSection(title: 'Need', subtitle: project.tag),
-                      ],
-                    ),
-                  ],
+                      const SizedBox(height: 4.0),
+                      _detailSection(
+                          title: 'Type', subtitle: project.description),
+                      _detailSection(title: 'Need', subtitle: project.tag),
+                    ],
+                  ),
                 ),
-                // const SizedBox.square(dimension: 10.0),
-                // const MultipleUser()
               ],
             ),
           ),
@@ -71,18 +73,23 @@ class ProjectCard extends StatelessWidget {
   }
 
   Widget _detailSection({required String title, required String subtitle}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$title:',
-          style: const TextStyle(color: AppColor.primary, fontSize: 14),
-        ),
-        Text(
+    return Flexible(
+      child: ListTile(
+        minVerticalPadding: 0.0,
+        contentPadding: EdgeInsets.zero,
+        title: Text('$title:'),
+        titleTextStyle: const TextStyle(color: AppColor.primary, fontSize: 14),
+        subtitle: Text(
           subtitle,
-          style: const TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.bold),
+          maxLines: 2,
+          style: const TextStyle(
+            color: AppColor.secondary,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
-      ],
+      ),
     );
   }
 }
