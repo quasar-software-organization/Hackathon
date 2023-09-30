@@ -20,10 +20,10 @@ class AppRoute {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static const String _welcome = '/welcome';
-  static const String _home = '/home';
-  static const String _project = '/project';
-  static const String _volunteer = '/volunteer';
-  static const String _nonprofits = '/nonprofits';
+  static const String _home = 'home';
+  static const String _project = 'project';
+  static const String _volunteer = 'volunteer';
+  static const String _nonprofits = 'nonprofits';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
