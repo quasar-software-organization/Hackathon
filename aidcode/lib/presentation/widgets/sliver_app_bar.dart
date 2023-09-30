@@ -1,6 +1,43 @@
 import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
 
+appBar(
+  BuildContext context, {
+  Widget? leading,
+  VoidCallback? onPressInfo,
+  VoidCallback? onBack,
+  Widget? title,
+  List<Widget>? actions,
+}) {
+  final canPop = Navigator.of(context).canPop();
+  return AppBar(
+    leading: SizedBox(
+      child: leading == null && canPop
+          ? IconButton(
+              onPressed: onBack,
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 40,
+              ),
+            )
+          : leading,
+    ),
+    title: title ??
+        Container(
+          height: 50,
+          margin: const EdgeInsets.only(top: 10),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                AppAssets.logoAidcodePng,
+              ),
+            ),
+          ),
+        ),
+    actions: actions,
+  );
+}
+
 sliverAppBar(
   BuildContext context, {
   Widget? leading,

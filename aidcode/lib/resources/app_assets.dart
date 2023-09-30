@@ -10,6 +10,7 @@ class AppAssets {
       'assets/images/american_cancer_society.png';
   static const String americanCancerSocietyIcon =
       'assets/images/american_cancer_society_icon.png';
+  static const String facebook = 'assets/images/facebook.png';
   static const String habitadDenver = 'assets/images/habitad_denver.png';
   static const String habitadRestore = 'assets/images/habitad_restore.png';
   static const String habitatHumanity = 'assets/images/habitat_humanity.png';
@@ -17,6 +18,8 @@ class AppAssets {
       'assets/images/image_user_profile_big.png';
   static const String imageUserProfileMock =
       'assets/images/image_user_profile_mock.png';
+  static const String instagram = 'assets/images/instagram.png';
+  static const String linkedin = 'assets/images/linkedin.png';
   static const String logoAidcodePng = 'assets/images/logo_aidcode_png.png';
   static const String miniLogo = 'assets/images/mini_logo.png';
   static const String wwfLogo = 'assets/images/wwf_logo.png';
