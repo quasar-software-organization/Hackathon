@@ -3,7 +3,9 @@ import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class FirestoreService {
   static const volunteersCollection = "volunteers";
   static const volunteerProjectsCollection = "volunteerProjects";
@@ -20,6 +22,7 @@ class FirestoreService {
 
   Future<Volunteer> getVolunteer(String id) async {
     final snapshot = await db.collection(volunteersCollection).doc(id).get();
+
     var v = Volunteer.fromJson(snapshot.data() as Map<String, dynamic>);
     v = v.copyWith(id: snapshot.id);
 

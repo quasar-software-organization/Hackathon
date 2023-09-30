@@ -1,3 +1,5 @@
+import 'package:aidcode/data/model/volunteer.dart';
+import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_avatar.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_description.dart';
 
@@ -6,7 +8,12 @@ import 'package:aidcode/presentation/screens/volunter/widgets/profile_job.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_option_bottom.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../core/theme/colors.dart';
+import '../../../domain/entities/proyect_entity.dart';
+import '../../bloc/volunteer_bloc/volunteer_bloc.dart';
 
 class VolunteerScreen extends StatelessWidget {
   const VolunteerScreen({super.key});
@@ -15,52 +22,116 @@ class VolunteerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          sliverAppBar(
-            context,
-            onBack: () {
-              context.pop();
-            },
-          ),
-          SliverToBoxAdapter(
-            child: Center(child: ProfileAvatar(size: Size(size.width * 0.8, size.width * 0.8))),
-          ),
-          const SliverToBoxAdapter(
-            child: ProfileInfo(),
-          ),
-          const SliverToBoxAdapter(
-            child: ProfileJob(),
-          ),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-            sliver: SliverToBoxAdapter(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ProfileOptionBottom(
-                    title: "158",
-                    subtitle: "Collected credits",
-                  ),
-                  ProfileOptionBottom(
-                    title: "20",
-                    subtitle: "Finished projects",
-                  ),
-                  ProfileOptionBottom(
-                    title: "3",
-                    subtitle: "Projects in progress",
-                  ),
-                ],
+      body: BlocBuilder<VolunteerBloc, VolunteerState>(
+        builder: (context, state) {
+          if (state.status == VolunteerStatus.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          final volunteer = state.volunteer;
+          final projects = state.volunteerProjects;
+
+          return CustomScrollView(
+            slivers: [
+              sliverAppBar(
+                context,
+                onBack: () {
+                  context.pop();
+                },
+                onPressInfo: volunteer == null
+                    ? null
+                    : () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text('Contact Information'),
+                              contentPadding: EdgeInsets.zero,
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ListTile(
+                                    onTap: () {},
+                                    leading:
+                                        Icon(Icons.alternate_email_rounded),
+                                    title: Text('Email'),
+                                    subtitle: Text(
+                                      volunteer.email,
+                                      style:
+                                          TextStyle(color: AppColor.secondary),
+                                    ),
+                                  ),
+                                  ListTile(
+                                    onTap: () {},
+                                    leading: Icon(Icons.call),
+                                    title: Text('Phone'),
+                                    subtitle: Text(volunteer.phoneNumber),
+                                    trailing: Icon(Icons.call_made_rounded),
+                                  ),
+                                ],
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    context.pop();
+                                  },
+                                  child: Text('OK'),
+                                )
+                              ],
+                            );
+                          },
+                        );
+                      },
               ),
-            ),
-          ),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            sliver: SliverToBoxAdapter(
-              child: ProfileDescription(),
-            ),
-          ),
-        ],
+              volunteer == null
+                  ? const SliverToBoxAdapter(
+                      child: Center(
+                        child: Text('Unexpected error'),
+                      ),
+                    )
+                  : SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 20.0),
+                        child: Column(
+                          children: [
+                            ProfileAvatar(
+                                size: Size(size.width * 0.8, size.width * 0.8)),
+                            ProfileInfo(
+                              name: volunteer.name,
+                              skills: volunteer.skills,
+                              age: volunteer.age.toString(),
+                            ),
+                            ProfileJob(
+                              availability: volunteer.availabilityDuration,
+                            ),
+                            const ProfileDescription(),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                children: [
+                                  ProfileOptionBottom(
+                                    title: "158",
+                                    subtitle: "Collected credits",
+                                  ),
+                                  ProfileOptionBottom(
+                                    title: "${projects.length}",
+                                    subtitle: "Finished projects",
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ...mockProjects
+                                .map((e) => ProjectCard(proyectEntity: e))
+                                .toList()
+                          ],
+                        ),
+                      ),
+                    ),
+            ],
+          );
+        },
       ),
     );
   }
