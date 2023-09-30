@@ -31,6 +31,9 @@ mixin _$Volunteer {
   String get availabilityDuration => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  int get credits => throw _privateConstructorUsedError;
+  String? get picture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +55,10 @@ abstract class $VolunteerCopyWith<$Res> {
       String experience,
       String availabilityDuration,
       String phoneNumber,
-      String email});
+      String email,
+      String? description,
+      int credits,
+      String? picture});
 }
 
 /// @nodoc
@@ -77,6 +83,9 @@ class _$VolunteerCopyWithImpl<$Res, $Val extends Volunteer>
     Object? availabilityDuration = null,
     Object? phoneNumber = null,
     Object? email = null,
+    Object? description = freezed,
+    Object? credits = null,
+    Object? picture = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -115,6 +124,18 @@ class _$VolunteerCopyWithImpl<$Res, $Val extends Volunteer>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as int,
+      picture: freezed == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -136,7 +157,10 @@ abstract class _$$VolunteerImplCopyWith<$Res>
       String experience,
       String availabilityDuration,
       String phoneNumber,
-      String email});
+      String email,
+      String? description,
+      int credits,
+      String? picture});
 }
 
 /// @nodoc
@@ -159,6 +183,9 @@ class __$$VolunteerImplCopyWithImpl<$Res>
     Object? availabilityDuration = null,
     Object? phoneNumber = null,
     Object? email = null,
+    Object? description = freezed,
+    Object? credits = null,
+    Object? picture = freezed,
   }) {
     return _then(_$VolunteerImpl(
       id: freezed == id
@@ -197,6 +224,18 @@ class __$$VolunteerImplCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      credits: null == credits
+          ? _value.credits
+          : credits // ignore: cast_nullable_to_non_nullable
+              as int,
+      picture: freezed == picture
+          ? _value.picture
+          : picture // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -213,7 +252,10 @@ class _$VolunteerImpl implements _Volunteer {
       required this.experience,
       required this.availabilityDuration,
       required this.phoneNumber,
-      required this.email});
+      required this.email,
+      this.description,
+      this.credits = 0,
+      this.picture});
 
   factory _$VolunteerImpl.fromJson(Map<String, dynamic> json) =>
       _$$VolunteerImplFromJson(json);
@@ -238,10 +280,17 @@ class _$VolunteerImpl implements _Volunteer {
   final String phoneNumber;
   @override
   final String email;
+  @override
+  final String? description;
+  @override
+  @JsonKey()
+  final int credits;
+  @override
+  final String? picture;
 
   @override
   String toString() {
-    return 'Volunteer(id: $id, name: $name, age: $age, availability: $availability, skills: $skills, experience: $experience, availabilityDuration: $availabilityDuration, phoneNumber: $phoneNumber, email: $email)';
+    return 'Volunteer(id: $id, name: $name, age: $age, availability: $availability, skills: $skills, experience: $experience, availabilityDuration: $availabilityDuration, phoneNumber: $phoneNumber, email: $email, description: $description, credits: $credits, picture: $picture)';
   }
 
   @override
@@ -261,13 +310,29 @@ class _$VolunteerImpl implements _Volunteer {
                 other.availabilityDuration == availabilityDuration) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.credits, credits) || other.credits == credits) &&
+            (identical(other.picture, picture) || other.picture == picture));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, age, availability,
-      skills, experience, availabilityDuration, phoneNumber, email);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      age,
+      availability,
+      skills,
+      experience,
+      availabilityDuration,
+      phoneNumber,
+      email,
+      description,
+      credits,
+      picture);
 
   @JsonKey(ignore: true)
   @override
@@ -293,7 +358,10 @@ abstract class _Volunteer implements Volunteer {
       required final String experience,
       required final String availabilityDuration,
       required final String phoneNumber,
-      required final String email}) = _$VolunteerImpl;
+      required final String email,
+      final String? description,
+      final int credits,
+      final String? picture}) = _$VolunteerImpl;
 
   factory _Volunteer.fromJson(Map<String, dynamic> json) =
       _$VolunteerImpl.fromJson;
@@ -316,6 +384,12 @@ abstract class _Volunteer implements Volunteer {
   String get phoneNumber;
   @override
   String get email;
+  @override
+  String? get description;
+  @override
+  int get credits;
+  @override
+  String? get picture;
   @override
   @JsonKey(ignore: true)
   _$$VolunteerImplCopyWith<_$VolunteerImpl> get copyWith =>
