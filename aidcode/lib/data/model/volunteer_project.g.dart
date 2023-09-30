@@ -9,7 +9,7 @@ part of 'volunteer_project.dart';
 _$VolunteerProjectImpl _$$VolunteerProjectImplFromJson(
         Map<String, dynamic> json) =>
     _$VolunteerProjectImpl(
-      volunteerId: json['volunteerId'] as String,
+      volunteerId: json['volunteerId'] as String?,
       projectId: json['projectId'] as String,
     );
 

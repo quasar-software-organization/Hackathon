@@ -1,13 +1,12 @@
-import 'package:aidcode/presentation/screens/home.dart';
 import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
-import 'package:aidcode/presentation/screens/project/project.dart';
+import 'package:aidcode/presentation/screens/projects/projects.dart';
 import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-enum MyRoutes { welcome, home, project, volunteer, nonprofits }
+enum MyRoutes { welcome, projects, volunteer, nonprofits }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -20,8 +19,7 @@ class AppRoute {
   static final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   static const String _welcome = '/welcome';
-  static const String _home = 'home';
-  static const String _project = 'project';
+  static const String _projects = 'projects';
   static const String _volunteer = 'volunteer';
   static const String _nonprofits = 'nonprofits';
 
@@ -38,17 +36,12 @@ class AppRoute {
         child: (context, state) => const WelcomeScreen(),
         routes: [
           ResponsiveRoute(
-            path: _home,
-            name: MyRoutes.home.name,
-            child: (context, state) => const HomeScreen(),
+            path: _projects,
+            name: MyRoutes.projects.name,
+            child: (context, state) {
+              return const ProjectsScreen();
+            },
             routes: [
-              ResponsiveRoute(
-                path: _project,
-                name: MyRoutes.project.name,
-                child: (context, state) {
-                  return const ProjectScreen();
-                },
-              ),
               ResponsiveRoute(
                 path: _volunteer,
                 name: MyRoutes.volunteer.name,

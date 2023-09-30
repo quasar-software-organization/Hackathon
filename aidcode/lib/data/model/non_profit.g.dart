@@ -8,7 +8,7 @@ part of 'non_profit.dart';
 
 _$NonProfitImpl _$$NonProfitImplFromJson(Map<String, dynamic> json) =>
     _$NonProfitImpl(
-      id: json['id'] as String,
+      id: json['id'] as String?,
       name: json['name'] as String,
       missionAndVision: json['missionAndVision'] as String,
     );
