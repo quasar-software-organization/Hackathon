@@ -21,7 +21,7 @@ class LinkedinDatasourceImpl implements LinkedinDatasource {
       required String nonProfitName}) async {
     try {
       await dio.post('/v2/ugcPosts', data: {
-        "author": "urn:li:person:98947521",
+        "author": "urn:li:person:mrxCTI8KuP",
         "lifecycleState": "PUBLISHED",
         "specificContent": {
           "com.linkedin.ugc.ShareContent": {
