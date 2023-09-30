@@ -62,7 +62,7 @@ sliverAppBar(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: size.width * 0.2,
+              width: size.width * 0.15,
               child: leading == null && canPop
                   ? IconButton(
                       onPressed: onBack,
