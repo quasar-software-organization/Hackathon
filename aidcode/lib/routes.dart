@@ -1,3 +1,4 @@
+import 'package:aidcode/presentation/screens/about/about_screen.dart';
 import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
 import 'package:aidcode/presentation/screens/project_details/project_details.dart';
 import 'package:aidcode/presentation/screens/projects/projects.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-enum MyRoutes { welcome, projects, projectDetail, volunteer, nonprofits }
+enum MyRoutes { welcome, projects, projectDetail, volunteer, nonprofits, aboutUs }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -23,6 +24,7 @@ class AppRoute {
   static const String _projects = 'projects';
   static const String _volunteer = 'volunteer';
   static const String _nonprofits = 'nonprofits';
+  static const String _aboutUs = 'about_us';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -69,6 +71,13 @@ class AppRoute {
             name: MyRoutes.nonprofits.name,
             child: (context, state) {
               return const NonProfitsScreen();
+            },
+          ),
+          ResponsiveRoute(
+            path: _aboutUs,
+            name: MyRoutes.aboutUs.name,
+            child: (context, state) {
+              return const AboutUsScreen();
             },
           ),
         ],

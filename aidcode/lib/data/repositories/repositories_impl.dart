@@ -1,11 +1,10 @@
+import 'package:aidcode/data/datasources/firestore_service.dart';
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:aidcode/domain/repositories/repository.dart';
 import 'package:injectable/injectable.dart';
-
-import '../datasources/firestore_service.dart';
 
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
@@ -14,32 +13,28 @@ class RepositoryImpl implements Repository {
   RepositoryImpl(this.fs);
 
   @override
-  Future<List<Project>> getNonProfitsProjects(
-      {required String nonProfitId}) async {
-    // TODO: implement getNonProfitsProjects
-    throw UnimplementedError();
+  Future<List<Project>> getNonProfitsProjects({required String nonProfitId}) async {
+    return await fs.getNonProfitProjects(nonProfitId);
   }
 
   @override
   Future<Project> getProject({required String id}) async {
-    // TODO: implement getProject
-    throw UnimplementedError();
+    return await fs.getProject(id);
   }
 
   @override
   Future<List<Project>> getProjects() async {
-    // TODO: implement getProjects
-    throw UnimplementedError();
+    return await fs.getProjects();
   }
 
   @override
   Future<Volunteer> getVolunteer({required String id}) async {
-    return fs.getVolunteer(id);
+    return await fs.getVolunteer(id);
   }
 
   @override
   Future<List<Project>> getVolunteerProject({required String id}) async {
-    return fs.getVolunteerProjects(id);
+    return await fs.getVolunteerProjects(id);
   }
 
   @override
@@ -61,8 +56,7 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<void> putVolunteerProject(
-      {required VolunteerProject volunteerProject}) async {
+  Future<void> putVolunteerProject({required VolunteerProject volunteerProject}) async {
     // TODO: implement putVolunteerProject
     throw UnimplementedError();
   }

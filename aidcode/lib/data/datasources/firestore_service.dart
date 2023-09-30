@@ -85,6 +85,14 @@ class FirestoreService {
     await db.collection(nonProfitsCollection).add(nonProfit.toJson());
   }
 
+  Future<NonProfit> getNonProfit(String id) async {
+    final snapshot = await db.collection(nonProfitsCollection).doc(id).get();
+    var np = NonProfit.fromJson(snapshot.data() as Map<String, dynamic>);
+    np = np.copyWith(id: snapshot.id);
+
+    return np;
+  }
+
   Future<List<Project>> getNonProfitProjects(String nonProfitId) async {
     final queryRes = await db
         .collection(projectsCollection)

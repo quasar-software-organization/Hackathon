@@ -5,7 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 part 'project_event.dart';
+
 part 'project_state.dart';
+
 part 'project_bloc.freezed.dart';
 
 @injectable
@@ -16,7 +18,10 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
     on<ProjectEvent>(
       (event, emit) async {
         await event.when(
-          init: () async {},
+          init: () async {
+            List<Project> projects = await repository.getProjects();
+            emit(state.copyWith(projects: projects, hasInitialized: true));
+          },
           putProject: (project) async {},
           getProject: (id) async {},
           getProjects: () async {},
