@@ -1,3 +1,4 @@
+import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 class ProfileAvatar extends StatelessWidget {
@@ -18,6 +19,7 @@ class ProfileAvatar extends StatelessWidget {
         decoration: BoxDecoration(
           color: scheme.background,
           borderRadius: BorderRadius.circular(8),
+          image: const DecorationImage(image: AssetImage(AppAssets.imageUserProfileBig), fit: BoxFit.cover),
         ),
       ),
     );
