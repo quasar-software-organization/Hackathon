@@ -11,7 +11,8 @@ abstract class RegisterModule {
   String get baseUrl => 'https://api.linkedin.com';
 
   @lazySingleton
-  Dio dioProvider(@Named('LinkedinApiBaseUrl') String url) {
+  @Named("LinkedinDio")
+  Dio linkedinDioProvider(@Named('LinkedinApiBaseUrl') String url) {
     final dio = Dio(
       BaseOptions(
         baseUrl: url,
