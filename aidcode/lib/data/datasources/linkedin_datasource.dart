@@ -20,20 +20,18 @@ class LinkedinDatasourceImpl implements LinkedinDatasource {
       required String description,
       required String nonProfitName}) async {
     try {
+      final titleNonProfit = '$nonProfitName: $title';
       await dio.post('/v2/ugcPosts', data: {
         "author": "urn:li:person:mrxCTI8KuP",
         "lifecycleState": "PUBLISHED",
         "specificContent": {
           "com.linkedin.ugc.ShareContent": {
-            "shareCommentary": {"text": title},
+            "shareCommentary": {"text": titleNonProfit},
             "shareMediaCategory": "ARTICLE",
             "media": [
               {
                 "status": "READY",
-                "description": {
-                  "text":
-                      description
-                },
+                "description": {"text": description},
                 "originalUrl": "https://blog.linkedin.com/",
                 "title": {"text": "Official LinkedIn Blog"}
               }
