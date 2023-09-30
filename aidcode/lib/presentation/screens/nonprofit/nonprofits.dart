@@ -1,5 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
-import 'package:aidcode/presentation/screens/project/widgets/project_item.dart';
+import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 
