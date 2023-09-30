@@ -1,4 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
+import 'package:aidcode/domain/entities/proyect_entity.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:aidcode/routes.dart';
@@ -6,26 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard(
-      {super.key,
-      required this.name,
-      required this.type,
-      required this.status,
-      required this.date,
-      required this.projectId});
+  const ProjectCard({super.key, required this.proyectEntity});
 
-  final String projectId;
-  final String name;
-  final String type;
-  final String status;
-  final String date;
+  final ProyectEntity proyectEntity;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context
-          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": projectId}),
+      onTap: () => context.goNamed(MyRoutes.projectDetail.name,
+          pathParameters: {"id": proyectEntity.name}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -43,7 +34,7 @@ class ProjectCard extends StatelessWidget {
                         height: 150,
                         width: 150,
                         child: Image.asset(
-                          AppAssets.projectLogo,
+                          proyectEntity.logo,
                           fit: BoxFit.cover,
                           height: 150,
                         )),
@@ -53,7 +44,7 @@ class ProjectCard extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .5,
-                          child:  Text(name,
+                          child: Text(proyectEntity.name,
                               style: const TextStyle(
                                 color: AppColor.secondary,
                                 fontWeight: FontWeight.bold,
@@ -65,9 +56,12 @@ class ProjectCard extends StatelessWidget {
                                   .clip // Usa elipsis (...) si el texto se desborda
                               ),
                         ),
-                        _detailSection(title: 'Type', subtitle: type),
-                        _detailSection(title: 'Status', subtitle: status),
-                        _detailSection(title: 'Date', subtitle: date),
+                        _detailSection(
+                            title: 'Type', subtitle: proyectEntity.type),
+                        _detailSection(
+                            title: 'Need', subtitle: proyectEntity.need),
+                        _detailSection(
+                            title: 'Date', subtitle: proyectEntity.need),
                       ],
                     ),
                   ],

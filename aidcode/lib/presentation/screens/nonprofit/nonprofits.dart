@@ -1,4 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
+import 'package:aidcode/domain/entities/proyect_entity.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -57,9 +58,10 @@ class NonProfitsScreen extends StatelessWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return const ProjectCard();
+                  return ProjectCard(proyectEntity: mockProjects[index]);
                 },
-                childCount: 20, // Número de elementos en la lista
+                childCount:
+                    mockProjects.length, // Número de elementos en la lista
               ),
             ),
           ],

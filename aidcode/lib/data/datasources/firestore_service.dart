@@ -1,9 +1,10 @@
+import 'dart:html';
+
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 class FirestoreService {
   static const volunteersCollection = "volunteers";
@@ -12,6 +13,7 @@ class FirestoreService {
   static const nonProfitsCollection = "nonProfits";
 
   final FirebaseFirestore db;
+
   FirestoreService(this.db);
 
   Future<void> createVolunteer(Volunteer volunteer) async {
@@ -27,21 +29,29 @@ class FirestoreService {
   }
 
   Future<void> createVolunteerProject(VolunteerProject volunteerProject) async {
-    await db.collection(volunteerProjectsCollection).add(volunteerProject.toJson());
+    await db
+        .collection(volunteerProjectsCollection)
+        .add(volunteerProject.toJson());
   }
 
   Future<List<Project>> getVolunteerProjects(String volunteerId) async {
-    final snapshot = await db.collection(volunteerProjectsCollection).where('volunteerId', isEqualTo: volunteerId).get();
+    final query = await db
+        .collection(volunteerProjectsCollection)
+        .where('volunteerId', isEqualTo: volunteerId)
+        .get();
 
-    return [
-      const Project(
-          id: 'fake',
-          name: 'fake',
-          description: 'fake project',
-          status: 'fake',
-          nonProfitId: 'fake'
-      )
-    ];
+    List<Project> projects = [];
+    for (var snapshot in query.docs) {
+      final vpId = VolunteerProject.fromJson(snapshot.data()).projectId;
+
+      final pQuery = await db.collection(projectsCollection).doc(vpId).get();
+
+      var p = Project.fromJson(pQuery.data() as Map<String, dynamic>);
+      p = p.copyWith(id: vpId);
+      projects.add(p);
+    }
+
+    return projects;
   }
 
   Future<void> createProject(Project project) async {
@@ -54,23 +64,19 @@ class FirestoreService {
         name: 'fake',
         description: 'fake project',
         status: 'fake',
-        nonProfitId: 'fake'
-    );
+        nonProfitId: 'fake');
   }
 
   Future<List<Project>> getProjects() async {
-    return [
-      const Project(
-          id: 'fake',
-          name: 'fake',
-          description: 'fake project',
-          status: 'fake',
-          nonProfitId: 'fake'
-      )
-    ];
+    final queryRes = await db.collection(projectsCollection).get();
+    var p = queryRes.docs
+        .map((snapshot) => Project.fromJson(snapshot.data()))
+        .toList();
+
+    return p;
   }
 
-  Future<void> updateProject(Project project) async{
+  Future<void> updateProject(Project project) async {
     // await db.collection(projectsCollection)
   }
 
@@ -79,14 +85,14 @@ class FirestoreService {
   }
 
   Future<List<Project>> getNonProfitProjects(String nonProfitId) async {
-    return [
-      const Project(
-          id: 'fake',
-          name: 'fake',
-          description: 'fake project',
-          status: 'fake',
-          nonProfitId: 'fake'
-      )
-    ];
+    final queryRes = await db
+        .collection(projectsCollection)
+        .where('nonProfitId', isEqualTo: nonProfitId)
+        .get();
+    var p = queryRes.docs
+        .map((snapshot) => Project.fromJson(snapshot.data()))
+        .toList();
+
+    return p;
   }
 }
