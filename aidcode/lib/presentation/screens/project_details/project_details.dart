@@ -27,7 +27,7 @@ class ProjectDetails extends StatelessWidget {
               leading: SizedBox(
                 width: 40,
                 height: 40,
-                child: Image.asset(AppAssets.projectLogo),
+                child: Image.asset(AppAssets.wwfLogo),
               ),
             ),
             SliverPadding(
