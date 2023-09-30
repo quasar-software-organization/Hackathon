@@ -9,7 +9,7 @@ class ProjectDetailImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(AppAssets.projectLogo),
+        Image.asset(AppAssets.wwfLogo),
         const Text("WWF", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
         OutlinedButton(
           onPressed: () {},
