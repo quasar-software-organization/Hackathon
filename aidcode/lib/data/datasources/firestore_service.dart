@@ -96,8 +96,10 @@ class FirestoreService {
     return p;
   }
 
-  Future<void> updateProject(Project project) async {
-    // await db.collection(projectsCollection)
+  Future<void> updateProject(project) async {
+    final snapshot = await db.collection(projectsCollection).doc(project.id).get();
+
+    var p = snapshot.reference.update(project.toJson());
   }
 
   Future<void> createNonProfit(NonProfit nonProfit) async {
