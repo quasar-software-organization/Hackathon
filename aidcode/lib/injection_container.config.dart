@@ -43,14 +43,23 @@ _i1.GetIt $initGetIt(
   gh.factory<_i7.Repository>(
       () => _i8.RepositoryImpl(gh<_i4.FirestoreService>()));
   gh.factory<String>(
-    () => registerModule.baseUrl,
+    () => registerModule.linkedinBaseUrl,
     instanceName: 'LinkedinApiBaseUrl',
+  );
+  gh.factory<String>(
+    () => registerModule.githubBaseUrl,
+    instanceName: 'GithubApiBaseUrl',
   );
   gh.factory<_i9.VolunteerBloc>(() => _i9.VolunteerBloc(gh<_i7.Repository>()));
   gh.lazySingleton<_i6.Dio>(
     () => registerModule
         .linkedinDioProvider(gh<String>(instanceName: 'LinkedinApiBaseUrl')),
     instanceName: 'LinkedinDio',
+  );
+  gh.lazySingleton<_i6.Dio>(
+    () => registerModule
+        .githubDioProvider(gh<String>(instanceName: 'GithubApiBaseUrl')),
+    instanceName: 'GithubDio',
   );
   gh.factory<_i10.NonProfitBloc>(
       () => _i10.NonProfitBloc(gh<_i7.Repository>()));
