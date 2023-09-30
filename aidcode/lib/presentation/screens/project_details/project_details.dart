@@ -5,7 +5,9 @@ import '../../widgets/sliver_app_bar.dart';
 import 'widgets/project_image.dart';
 
 class ProjectDetails extends StatelessWidget {
-  const ProjectDetails({super.key});
+  final int id;
+
+  const ProjectDetails({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class ProjectDetails extends StatelessWidget {
               ),
             ),
             SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               sliver: SliverFillRemaining(
                 child: Card(
                   color: Colors.white,

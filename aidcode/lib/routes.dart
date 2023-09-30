@@ -1,4 +1,5 @@
 import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
+import 'package:aidcode/presentation/screens/project_details/project_details.dart';
 import 'package:aidcode/presentation/screens/projects/projects.dart';
 import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-enum MyRoutes { welcome, projects, volunteer, nonprofits }
+enum MyRoutes { welcome, projects, projectDetail, volunteer, nonprofits }
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -42,6 +43,16 @@ class AppRoute {
               return const ProjectsScreen();
             },
             routes: [
+              ResponsiveRoute(
+                path: "detail/:id",
+                name: MyRoutes.projectDetail.name,
+                child: (context, state) {
+                  int id = int.tryParse(state.pathParameters['id'] ?? "0") ?? 0;
+                  return ProjectDetails(
+                    id: id,
+                  );
+                },
+              ),
               ResponsiveRoute(
                 path: _volunteer,
                 name: MyRoutes.volunteer.name,
@@ -101,11 +112,9 @@ class ResponsiveRoute extends GoRoute {
                 key: state.pageKey,
                 transitionDuration: transitionDuration,
                 child: page,
-                transitionsBuilder:
-                    (context, animation, secondaryAnimation, child) {
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
                   return FadeTransition(
-                    opacity: CurveTween(curve: Curves.easeInOutCirc)
-                        .animate(animation),
+                    opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
                     child: child,
                   );
                 },
