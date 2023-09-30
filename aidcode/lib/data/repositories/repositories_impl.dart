@@ -13,14 +13,12 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<List<Project>> getNonProfitsProjects({required String nonProfitId}) async {
-    // TODO: implement getNonProfitsProjects
-    throw UnimplementedError();
+    return await fs.getNonProfitProjects(nonProfitId);
   }
 
   @override
   Future<Project> getProject({required String id}) async {
-    // TODO: implement getProject
-    throw UnimplementedError();
+    return await fs.getProject(id);
   }
 
   @override
@@ -30,8 +28,7 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<Volunteer> getVolunteer({required String id}) async {
-    // TODO: implement getVolunteer
-    throw UnimplementedError();
+    return await fs.getVolunteer(id);
   }
 
   @override

@@ -2,6 +2,7 @@ import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
+import 'package:aidcode/presentation/widgets/loading_widget.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,13 +19,9 @@ class NonProfitsScreen extends StatelessWidget {
       NonProfit? np = state.nonProfit;
 
       return Scaffold(
-        body: np == null ? _loading() : _body(np, state.projects, context),
+        body: np == null || !state.hasInitialized ? const LoadingWidget() : _body(np, state.projects, context),
       );
     });
-  }
-
-  Widget _loading() {
-    return const CircularProgressIndicator();
   }
 
   Widget _body(NonProfit np, List<Project> projects, BuildContext context) {
@@ -48,11 +45,13 @@ class NonProfitsScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate.fixed([
               const Text('Description', style: TextStyle(color: AppColor.secondary, fontSize: 20, fontWeight: FontWeight.bold)),
-              Text(np.missionAndVision,
-                  style: const TextStyle(
-                    color: AppColor.secondary,
-                    fontSize: 16,
-                  )),
+              Text(
+                np.missionAndVision,
+                style: const TextStyle(
+                  color: AppColor.secondary,
+                  fontSize: 16,
+                ),
+              ),
               const SizedBox.square(dimension: 50)
             ]),
           ),
