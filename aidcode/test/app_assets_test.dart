@@ -5,6 +5,7 @@ import 'package:aidcode/resources/resources.dart';
 
 void main() {
   test('app_assets assets test', () {
+    expect(File(AppAssets.aidCodeWelcome).existsSync(), isTrue);
     expect(File(AppAssets.logoAidcodePng).existsSync(), isTrue);
     expect(File(AppAssets.logoAidcodeSvg).existsSync(), isTrue);
   });
