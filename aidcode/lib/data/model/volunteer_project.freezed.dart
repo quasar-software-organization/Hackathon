@@ -20,7 +20,8 @@ VolunteerProject _$VolunteerProjectFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VolunteerProject {
-  String get name => throw _privateConstructorUsedError;
+  String get volunteerId => throw _privateConstructorUsedError;
+  String get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $VolunteerProjectCopyWith<$Res> {
           VolunteerProject value, $Res Function(VolunteerProject) then) =
       _$VolunteerProjectCopyWithImpl<$Res, VolunteerProject>;
   @useResult
-  $Res call({String name});
+  $Res call({String volunteerId, String projectId});
 }
 
 /// @nodoc
@@ -50,12 +51,17 @@ class _$VolunteerProjectCopyWithImpl<$Res, $Val extends VolunteerProject>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? volunteerId = null,
+    Object? projectId = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      volunteerId: null == volunteerId
+          ? _value.volunteerId
+          : volunteerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      projectId: null == projectId
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -69,7 +75,7 @@ abstract class _$$VolunteerProjectImplCopyWith<$Res>
       __$$VolunteerProjectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({String volunteerId, String projectId});
 }
 
 /// @nodoc
@@ -83,12 +89,17 @@ class __$$VolunteerProjectImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? volunteerId = null,
+    Object? projectId = null,
   }) {
     return _then(_$VolunteerProjectImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      volunteerId: null == volunteerId
+          ? _value.volunteerId
+          : volunteerId // ignore: cast_nullable_to_non_nullable
+              as String,
+      projectId: null == projectId
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -97,17 +108,20 @@ class __$$VolunteerProjectImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VolunteerProjectImpl implements _VolunteerProject {
-  const _$VolunteerProjectImpl({required this.name});
+  const _$VolunteerProjectImpl(
+      {required this.volunteerId, required this.projectId});
 
   factory _$VolunteerProjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$VolunteerProjectImplFromJson(json);
 
   @override
-  final String name;
+  final String volunteerId;
+  @override
+  final String projectId;
 
   @override
   String toString() {
-    return 'VolunteerProject(name: $name)';
+    return 'VolunteerProject(volunteerId: $volunteerId, projectId: $projectId)';
   }
 
   @override
@@ -115,12 +129,15 @@ class _$VolunteerProjectImpl implements _VolunteerProject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VolunteerProjectImpl &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.volunteerId, volunteerId) ||
+                other.volunteerId == volunteerId) &&
+            (identical(other.projectId, projectId) ||
+                other.projectId == projectId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, volunteerId, projectId);
 
   @JsonKey(ignore: true)
   @override
@@ -138,14 +155,17 @@ class _$VolunteerProjectImpl implements _VolunteerProject {
 }
 
 abstract class _VolunteerProject implements VolunteerProject {
-  const factory _VolunteerProject({required final String name}) =
-      _$VolunteerProjectImpl;
+  const factory _VolunteerProject(
+      {required final String volunteerId,
+      required final String projectId}) = _$VolunteerProjectImpl;
 
   factory _VolunteerProject.fromJson(Map<String, dynamic> json) =
       _$VolunteerProjectImpl.fromJson;
 
   @override
-  String get name;
+  String get volunteerId;
+  @override
+  String get projectId;
   @override
   @JsonKey(ignore: true)
   _$$VolunteerProjectImplCopyWith<_$VolunteerProjectImpl> get copyWith =>
