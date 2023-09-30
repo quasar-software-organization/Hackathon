@@ -6,6 +6,7 @@ import 'package:aidcode/presentation/screens/volunter/widgets/profile_descriptio
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_info.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_job.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_option_bottom.dart';
+import 'package:aidcode/presentation/widgets/loading_widget.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +26,7 @@ class VolunteerScreen extends StatelessWidget {
       body: BlocBuilder<VolunteerBloc, VolunteerState>(
         builder: (context, state) {
           if (state.status == VolunteerStatus.loading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const LoadingWidget();
           }
 
           final volunteer = state.volunteer;
@@ -101,13 +100,17 @@ class VolunteerScreen extends StatelessWidget {
               volunteer == null
                   ? const SliverToBoxAdapter(
                       child: Center(
-                        child: Text('Unexpected error'),
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text('Unexpected error'),
+                        ),
                       ),
                     )
                   : SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 20.0),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ProfileAvatar(
                                 picture: volunteer.picture,
@@ -128,6 +131,7 @@ class VolunteerScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ProfileOptionBottom(
                                     title: volunteer.credits.toString(),

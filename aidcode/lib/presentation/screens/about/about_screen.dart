@@ -12,15 +12,14 @@ class AboutUsScreen extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        leading: SizedBox(
-          child:
-              Padding(padding: const EdgeInsets.symmetric(horizontal: 10.0), child: Image.asset(AppAssets.imageUserProfileMock)),
-        ),
+        automaticallyImplyLeading: false,
+        leading: const SizedBox(),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: IconButton(
-              icon: const Icon(Icons.close, color: AppColor.secondary, size: 26),
+              icon:
+                  const Icon(Icons.close, color: AppColor.secondary, size: 26),
               onPressed: () {
                 Navigator.pop(context);
               },

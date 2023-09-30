@@ -8,24 +8,19 @@ class ProfileJob extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final size = MediaQuery.of(context).size;
     return SizedBox(
-      height: 100,
+      height: 80,
       child: Center(
         child: SizedBox(
           height: 60,
           width: size.width * 0.7,
-          child: MaterialButton(
-            elevation: 0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            onPressed: () {},
-            color: scheme.primary,
-            child: FittedBox(
-              child: Text(
-                'Availability: $availability',
-                style: const TextStyle(fontSize: 24, color: AppColor.secondary),
+          child: FittedBox(
+            child: Text(
+              'Availability: $availability',
+              style: const TextStyle(
+                color: AppColor.primary,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),

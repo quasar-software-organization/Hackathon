@@ -30,6 +30,7 @@ class ProjectDetails extends StatelessWidget {
                 child: Image.asset(AppAssets.wwfLogo),
               ),
             ),
+            const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               sliver: SliverFillRemaining(
@@ -64,7 +65,10 @@ class ProjectDetails extends StatelessWidget {
                             widget: const Center(
                               child: Text(
                                 "Add",
-                                style: TextStyle(color: AppColor.primary, fontSize: 20, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: AppColor.primary,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                             onPressed: () {},

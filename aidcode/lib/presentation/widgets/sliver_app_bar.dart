@@ -1,8 +1,10 @@
+import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 appBar(
   BuildContext context, {
+  bool automaticallyImplyLeading = true,
   Widget? leading,
   VoidCallback? onPressInfo,
   VoidCallback? onBack,
@@ -11,6 +13,7 @@ appBar(
 }) {
   final canPop = Navigator.of(context).canPop();
   return AppBar(
+    automaticallyImplyLeading: automaticallyImplyLeading,
     leading: SizedBox(
       child: leading == null && canPop
           ? IconButton(
@@ -51,7 +54,7 @@ sliverAppBar(
     leading: const SizedBox(),
     floating: true,
     snap: true,
-    expandedHeight: 100,
+    expandedHeight: 65.0,
     flexibleSpace: SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -59,7 +62,7 @@ sliverAppBar(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: size.width * 0.28,
+              width: size.width * 0.2,
               child: leading == null && canPop
                   ? IconButton(
                       onPressed: onBack,
@@ -83,10 +86,14 @@ sliverAppBar(
               ),
             ),
             SizedBox(
-              width: size.width * 0.28,
+              width: size.width * 0.2,
               child: training ??
                   IconButton(
-                    icon: const Icon(Icons.info_outline, size: 40),
+                    icon: const Icon(
+                      Icons.info_outline,
+                      size: 40,
+                      color: AppColor.secondary,
+                    ),
                     onPressed: onPressInfo,
                   ),
             ),
