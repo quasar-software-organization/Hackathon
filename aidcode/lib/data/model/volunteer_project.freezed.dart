@@ -20,7 +20,7 @@ VolunteerProject _$VolunteerProjectFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VolunteerProject {
-  String get volunteerId => throw _privateConstructorUsedError;
+  String? get volunteerId => throw _privateConstructorUsedError;
   String get projectId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $VolunteerProjectCopyWith<$Res> {
           VolunteerProject value, $Res Function(VolunteerProject) then) =
       _$VolunteerProjectCopyWithImpl<$Res, VolunteerProject>;
   @useResult
-  $Res call({String volunteerId, String projectId});
+  $Res call({String? volunteerId, String projectId});
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$VolunteerProjectCopyWithImpl<$Res, $Val extends VolunteerProject>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? volunteerId = null,
+    Object? volunteerId = freezed,
     Object? projectId = null,
   }) {
     return _then(_value.copyWith(
-      volunteerId: null == volunteerId
+      volunteerId: freezed == volunteerId
           ? _value.volunteerId
           : volunteerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       projectId: null == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,7 @@ abstract class _$$VolunteerProjectImplCopyWith<$Res>
       __$$VolunteerProjectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String volunteerId, String projectId});
+  $Res call({String? volunteerId, String projectId});
 }
 
 /// @nodoc
@@ -89,14 +89,14 @@ class __$$VolunteerProjectImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? volunteerId = null,
+    Object? volunteerId = freezed,
     Object? projectId = null,
   }) {
     return _then(_$VolunteerProjectImpl(
-      volunteerId: null == volunteerId
+      volunteerId: freezed == volunteerId
           ? _value.volunteerId
           : volunteerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       projectId: null == projectId
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
@@ -108,14 +108,13 @@ class __$$VolunteerProjectImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VolunteerProjectImpl implements _VolunteerProject {
-  const _$VolunteerProjectImpl(
-      {required this.volunteerId, required this.projectId});
+  const _$VolunteerProjectImpl({this.volunteerId, required this.projectId});
 
   factory _$VolunteerProjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$VolunteerProjectImplFromJson(json);
 
   @override
-  final String volunteerId;
+  final String? volunteerId;
   @override
   final String projectId;
 
@@ -156,14 +155,14 @@ class _$VolunteerProjectImpl implements _VolunteerProject {
 
 abstract class _VolunteerProject implements VolunteerProject {
   const factory _VolunteerProject(
-      {required final String volunteerId,
+      {final String? volunteerId,
       required final String projectId}) = _$VolunteerProjectImpl;
 
   factory _VolunteerProject.fromJson(Map<String, dynamic> json) =
       _$VolunteerProjectImpl.fromJson;
 
   @override
-  String get volunteerId;
+  String? get volunteerId;
   @override
   String get projectId;
   @override

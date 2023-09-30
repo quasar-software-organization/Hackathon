@@ -20,7 +20,7 @@ Volunteer _$VolunteerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Volunteer {
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   int get age =>
       throw _privateConstructorUsedError; // This is measure in hours by day
@@ -44,7 +44,7 @@ abstract class $VolunteerCopyWith<$Res> {
       _$VolunteerCopyWithImpl<$Res, Volunteer>;
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String name,
       int age,
       int availability,
@@ -68,7 +68,7 @@ class _$VolunteerCopyWithImpl<$Res, $Val extends Volunteer>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? age = null,
     Object? availability = null,
@@ -79,10 +79,10 @@ class _$VolunteerCopyWithImpl<$Res, $Val extends Volunteer>
     Object? email = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -128,7 +128,7 @@ abstract class _$$VolunteerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String name,
       int age,
       int availability,
@@ -150,7 +150,7 @@ class __$$VolunteerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? age = null,
     Object? availability = null,
@@ -161,10 +161,10 @@ class __$$VolunteerImplCopyWithImpl<$Res>
     Object? email = null,
   }) {
     return _then(_$VolunteerImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -205,7 +205,7 @@ class __$$VolunteerImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$VolunteerImpl implements _Volunteer {
   const _$VolunteerImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.age,
       required this.availability,
@@ -219,7 +219,7 @@ class _$VolunteerImpl implements _Volunteer {
       _$$VolunteerImplFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String name;
   @override
@@ -285,7 +285,7 @@ class _$VolunteerImpl implements _Volunteer {
 
 abstract class _Volunteer implements Volunteer {
   const factory _Volunteer(
-      {required final String id,
+      {final String? id,
       required final String name,
       required final int age,
       required final int availability,
@@ -299,7 +299,7 @@ abstract class _Volunteer implements Volunteer {
       _$VolunteerImpl.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
   String get name;
   @override

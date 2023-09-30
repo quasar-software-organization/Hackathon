@@ -6,7 +6,7 @@ part 'volunteer_project.g.dart';
 @freezed
 class VolunteerProject with _$VolunteerProject {
   const factory VolunteerProject({
-    required String volunteerId,
+    String? volunteerId,
     required String projectId,
   }) = _VolunteerProject;
 

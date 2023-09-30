@@ -5,6 +5,7 @@ import 'package:aidcode/presentation/screens/volunter/widgets/profile_info.dart'
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_option_bottom.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class VolunteerScreen extends StatelessWidget {
   const VolunteerScreen({super.key});
@@ -15,9 +16,16 @@ class VolunteerScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          sliverAppBar(context),
+          sliverAppBar(
+            context,
+            onBack: () {
+              context.pop();
+            },
+          ),
           SliverToBoxAdapter(
-            child: Center(child: ProfileAvatar(size: Size(size.width * 0.8, size.width * 0.8))),
+            child: Center(
+                child: ProfileAvatar(
+                    size: Size(size.width * 0.8, size.width * 0.8))),
           ),
           const SliverToBoxAdapter(
             child: ProfileInfo(),
