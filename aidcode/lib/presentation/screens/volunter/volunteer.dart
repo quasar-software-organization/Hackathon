@@ -1,3 +1,4 @@
+import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_avatar.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_description.dart';
@@ -9,6 +10,7 @@ import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/colors.dart';
 import '../../bloc/volunteer_bloc/volunteer_bloc.dart';
@@ -51,7 +53,14 @@ class VolunteerScreen extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   ListTile(
-                                    onTap: () {},
+                                    onTap: () {
+                                      final Uri emailLaunchUri = Uri(
+                                        scheme: 'mailto',
+                                        path: volunteer.email,
+                                      );
+
+                                      launchUrl(emailLaunchUri);
+                                    },
                                     leading:
                                         Icon(Icons.alternate_email_rounded),
                                     title: Text('Email'),
@@ -62,7 +71,13 @@ class VolunteerScreen extends StatelessWidget {
                                     ),
                                   ),
                                   ListTile(
-                                    onTap: () {},
+                                    onTap: () {
+                                      final Uri telLaunchUri = Uri(
+                                        scheme: 'tel',
+                                        path: volunteer.phoneNumber,
+                                      );
+                                      launchUrl(telLaunchUri);
+                                    },
                                     leading: Icon(Icons.call),
                                     title: Text('Phone'),
                                     subtitle: Text(volunteer.phoneNumber),
@@ -105,12 +120,11 @@ class VolunteerScreen extends StatelessWidget {
                             ProfileJob(
                               availability: volunteer.availabilityDuration,
                             ),
-                            Visibility(
-                              visible: volunteer.description != null,
-                              child: ProfileDescription(
-                                description: volunteer.description!,
-                              ),
-                            ),
+                            volunteer.description != null
+                                ? ProfileDescription(
+                                    description: volunteer.description!,
+                                  )
+                                : const SizedBox.shrink(),
                             Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
