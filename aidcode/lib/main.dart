@@ -2,10 +2,14 @@ import 'package:aidcode/core/theme/light.dart';
 import 'package:aidcode/data/datasources/firestore_service.dart';
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/injection_container.dart';
+import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
+import 'package:aidcode/presentation/bloc/project_bloc/project_bloc.dart';
+import 'package:aidcode/presentation/bloc/volunteer_bloc/volunteer_bloc.dart';
 import 'package:aidcode/routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -22,7 +26,25 @@ void main() async {
 
   FlutterNativeSplash.remove();
 
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<ProjectBloc>()..add(const ProjectEvent.init()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<VolunteerBloc>()..add(const VolunteerEvent.init()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<NonProfitBloc>()..add(const NonProfitEvent.init()),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
