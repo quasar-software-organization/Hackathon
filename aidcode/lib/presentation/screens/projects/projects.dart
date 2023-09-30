@@ -1,5 +1,6 @@
 import 'package:aidcode/presentation/bloc/project_bloc/project_bloc.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
+import 'package:aidcode/presentation/widgets/loading_widget.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:aidcode/routes.dart';
@@ -29,14 +30,18 @@ class ProjectsScreen extends StatelessWidget {
                   child: Image.asset(AppAssets.imageUserProfileMock),
                 ),
               ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return ProjectCard(project: state.projects[index]);
-                  },
-                  childCount: state.projects.length,
-                ),
-              ),
+              state.hasInitialized
+                  ? SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          return ProjectCard(project: state.projects[index]);
+                        },
+                        childCount: state.projects.length,
+                      ),
+                    )
+                  : const SliverFillRemaining(
+                      child: LoadingWidget(),
+                    ),
             ],
           ),
         );

@@ -1,15 +1,18 @@
+import 'package:aidcode/data/datasources/firestore_service.dart';
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:aidcode/domain/repositories/repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
+  FirestoreService fs = FirestoreService(FirebaseFirestore.instance);
+
   @override
-  Future<List<Project>> getNonProfitsProjects(
-      {required String nonProfitId}) async {
+  Future<List<Project>> getNonProfitsProjects({required String nonProfitId}) async {
     // TODO: implement getNonProfitsProjects
     throw UnimplementedError();
   }
@@ -22,8 +25,7 @@ class RepositoryImpl implements Repository {
 
   @override
   Future<List<Project>> getProjects() async {
-    // TODO: implement getProjects
-    throw UnimplementedError();
+    return await fs.getProjects();
   }
 
   @override
@@ -57,8 +59,7 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<void> putVolunteerProject(
-      {required VolunteerProject volunteerProject}) async {
+  Future<void> putVolunteerProject({required VolunteerProject volunteerProject}) async {
     // TODO: implement putVolunteerProject
     throw UnimplementedError();
   }
