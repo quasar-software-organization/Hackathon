@@ -2,6 +2,7 @@ import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/data/model/project.dart';
 
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
+import 'package:aidcode/resources/resources.dart';
 
 import 'package:aidcode/routes.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context.goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": project.id!}),
+      onTap: () => context.goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": project.id ?? "0"}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -29,9 +30,16 @@ class ProjectCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    Container(
                       height: 150,
                       width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColor.secondary, width: 4),
+                        borderRadius: BorderRadius.circular(12),
+                        image: const DecorationImage(
+                          image: AssetImage(AppAssets.americanCancerSociety),
+                        ),
+                      ),
                     ),
                     const SizedBox.square(dimension: 10.0),
                     Column(
