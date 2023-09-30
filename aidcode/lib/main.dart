@@ -26,47 +26,6 @@ void main() async {
 
   FlutterNativeSplash.remove();
 
-  //  Expanded(
-  //                 flex: 2,
-  //                 child: Column(
-  //                   crossAxisAlignment: CrossAxisAlignment.start,
-  //                   children: [
-  //                     Text(
-  //                       project.name,
-  //                       style: const TextStyle(
-  //                         color: AppColor.secondary,
-  //                         fontWeight: FontWeight.bold,
-  //                         fontSize: 23,
-  //                       ),
-  //                       maxLines: 2,
-  //                       overflow: TextOverflow.ellipsis,
-  //                     ),
-  //                     _detailSection(
-  //                         title: 'Type', subtitle: project.description),
-  //                     _detailSection(title: 'Need', subtitle: project.tag),
-  //                   ],
-  //                 ),
-  //               ),
-
-  //                 Widget _detailSection({required String title, required String subtitle}) {
-  //   return ListTile(
-  //     minVerticalPadding: 0.0,
-  //     contentPadding: EdgeInsets.zero,
-  //     title: Text('$title:'),
-  //     titleTextStyle: const TextStyle(color: AppColor.primary, fontSize: 14),
-  //     subtitle: Text(
-  //       subtitle,
-  //       maxLines: 2,
-  //       style: const TextStyle(
-  //         color: AppColor.secondary,
-  //         fontSize: 16,
-  //         fontWeight: FontWeight.bold,
-  //         overflow: TextOverflow.ellipsis,
-  //       ),
-  //     ),
-  //   );
-  // }
-
   runApp(
     MultiBlocProvider(
       providers: [
