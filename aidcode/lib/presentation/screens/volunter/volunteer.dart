@@ -1,7 +1,8 @@
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_avatar.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_description.dart';
-import 'package:aidcode/presentation/screens/volunter/widgets/profile_donate.dart';
+
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_info.dart';
+import 'package:aidcode/presentation/screens/volunter/widgets/profile_job.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_option_bottom.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -23,34 +24,13 @@ class VolunteerScreen extends StatelessWidget {
             },
           ),
           SliverToBoxAdapter(
-            child: Center(
-                child: ProfileAvatar(
-                    size: Size(size.width * 0.8, size.width * 0.8))),
+            child: Center(child: ProfileAvatar(size: Size(size.width * 0.8, size.width * 0.8))),
           ),
           const SliverToBoxAdapter(
             child: ProfileInfo(),
           ),
-          const SliverPadding(
-            padding: EdgeInsets.all(20),
-            sliver: SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ProfileOptionBottom(
-                    title: "UI",
-                    subtitle: "Designer",
-                  ),
-                  ProfileOptionBottom(
-                    title: "UI",
-                    subtitle: "Designer",
-                  ),
-                  ProfileOptionBottom(
-                    title: "UI",
-                    subtitle: "Designer",
-                  ),
-                ],
-              ),
-            ),
+          const SliverToBoxAdapter(
+            child: ProfileJob(),
           ),
           const SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 20),
@@ -58,8 +38,27 @@ class VolunteerScreen extends StatelessWidget {
               child: ProfileDescription(),
             ),
           ),
-          const SliverToBoxAdapter(
-            child: ProfileDonate(),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ProfileOptionBottom(
+                    title: "158",
+                    subtitle: "Collected credits",
+                  ),
+                  ProfileOptionBottom(
+                    title: "20",
+                    subtitle: "Finished projects",
+                  ),
+                  ProfileOptionBottom(
+                    title: "3",
+                    subtitle: "Projects in progress",
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
