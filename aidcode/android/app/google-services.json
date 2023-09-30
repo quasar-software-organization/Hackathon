@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "20996820988",
+    "project_id": "quasar-general",
+    "storage_bucket": "quasar-general.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20996820988:android:9db87061c55408b9d86c79",
+        "android_client_info": {
+          "package_name": "com.example.aidcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20996820988-1iohubq19oc3rvp3t2qmhaqce0pvej8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuMC44padmZYD9zuQj16QSWEKmkLd6-nM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20996820988-1iohubq19oc3rvp3t2qmhaqce0pvej8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "20996820988-317vsdbqr53bjspnu1r1bbg5ho77idch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bnbx"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20996820988:android:00b0fc7128178eabd86c79",
+        "android_client_info": {
+          "package_name": "com.example.bnbx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20996820988-3h83m7goal0moor4p84k2imotmam6ijv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bnbx",
+            "certificate_hash": "3f5f9d97ae54f57f4ca960337db6f7a7c7ee5e25"
+          }
+        },
+        {
+          "client_id": "20996820988-1iohubq19oc3rvp3t2qmhaqce0pvej8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuMC44padmZYD9zuQj16QSWEKmkLd6-nM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20996820988-1iohubq19oc3rvp3t2qmhaqce0pvej8d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "20996820988-317vsdbqr53bjspnu1r1bbg5ho77idch.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bnbx"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
