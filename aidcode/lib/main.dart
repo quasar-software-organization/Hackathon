@@ -1,6 +1,9 @@
 import 'package:aidcode/core/theme/light.dart';
+import 'package:aidcode/data/datasources/firestore_service.dart';
+import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/injection_container.dart';
 import 'package:aidcode/routes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -13,6 +16,8 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
 
+  FirestoreService fs = FirestoreService(FirebaseFirestore.instance);
+  
   runApp(const MyApp());
 }
 
