@@ -22,7 +22,7 @@ NonProfit _$NonProfitFromJson(Map<String, dynamic> json) {
 mixin _$NonProfit {
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get missionAndVision => throw _privateConstructorUsedError;
+  String get missionAndVission => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $NonProfitCopyWith<$Res> {
   factory $NonProfitCopyWith(NonProfit value, $Res Function(NonProfit) then) =
       _$NonProfitCopyWithImpl<$Res, NonProfit>;
   @useResult
-  $Res call({String? id, String name, String missionAndVision});
+  $Res call({String? id, String name, String missionAndVission});
 }
 
 /// @nodoc
@@ -53,7 +53,7 @@ class _$NonProfitCopyWithImpl<$Res, $Val extends NonProfit>
   $Res call({
     Object? id = freezed,
     Object? name = null,
-    Object? missionAndVision = null,
+    Object? missionAndVission = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -64,9 +64,9 @@ class _$NonProfitCopyWithImpl<$Res, $Val extends NonProfit>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      missionAndVision: null == missionAndVision
-          ? _value.missionAndVision
-          : missionAndVision // ignore: cast_nullable_to_non_nullable
+      missionAndVission: null == missionAndVission
+          ? _value.missionAndVission
+          : missionAndVission // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -80,7 +80,7 @@ abstract class _$$NonProfitImplCopyWith<$Res>
       __$$NonProfitImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String name, String missionAndVision});
+  $Res call({String? id, String name, String missionAndVission});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class __$$NonProfitImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = null,
-    Object? missionAndVision = null,
+    Object? missionAndVission = null,
   }) {
     return _then(_$NonProfitImpl(
       id: freezed == id
@@ -107,9 +107,9 @@ class __$$NonProfitImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      missionAndVision: null == missionAndVision
-          ? _value.missionAndVision
-          : missionAndVision // ignore: cast_nullable_to_non_nullable
+      missionAndVission: null == missionAndVission
+          ? _value.missionAndVission
+          : missionAndVission // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -119,7 +119,7 @@ class __$$NonProfitImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NonProfitImpl implements _NonProfit {
   const _$NonProfitImpl(
-      {this.id, required this.name, required this.missionAndVision});
+      {this.id, required this.name, required this.missionAndVission});
 
   factory _$NonProfitImpl.fromJson(Map<String, dynamic> json) =>
       _$$NonProfitImplFromJson(json);
@@ -129,11 +129,11 @@ class _$NonProfitImpl implements _NonProfit {
   @override
   final String name;
   @override
-  final String missionAndVision;
+  final String missionAndVission;
 
   @override
   String toString() {
-    return 'NonProfit(id: $id, name: $name, missionAndVision: $missionAndVision)';
+    return 'NonProfit(id: $id, name: $name, missionAndVission: $missionAndVission)';
   }
 
   @override
@@ -143,13 +143,13 @@ class _$NonProfitImpl implements _NonProfit {
             other is _$NonProfitImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.missionAndVision, missionAndVision) ||
-                other.missionAndVision == missionAndVision));
+            (identical(other.missionAndVission, missionAndVission) ||
+                other.missionAndVission == missionAndVission));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, missionAndVision);
+  int get hashCode => Object.hash(runtimeType, id, name, missionAndVission);
 
   @JsonKey(ignore: true)
   @override
@@ -169,7 +169,7 @@ abstract class _NonProfit implements NonProfit {
   const factory _NonProfit(
       {final String? id,
       required final String name,
-      required final String missionAndVision}) = _$NonProfitImpl;
+      required final String missionAndVission}) = _$NonProfitImpl;
 
   factory _NonProfit.fromJson(Map<String, dynamic> json) =
       _$NonProfitImpl.fromJson;
@@ -179,7 +179,7 @@ abstract class _NonProfit implements NonProfit {
   @override
   String get name;
   @override
-  String get missionAndVision;
+  String get missionAndVission;
   @override
   @JsonKey(ignore: true)
   _$$NonProfitImplCopyWith<_$NonProfitImpl> get copyWith =>
