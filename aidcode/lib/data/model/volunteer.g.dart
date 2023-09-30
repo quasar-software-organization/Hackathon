@@ -17,6 +17,9 @@ _$VolunteerImpl _$$VolunteerImplFromJson(Map<String, dynamic> json) =>
       availabilityDuration: json['availabilityDuration'] as String,
       phoneNumber: json['phoneNumber'] as String,
       email: json['email'] as String,
+      description: json['description'] as String?,
+      credits: json['credits'] as int? ?? 0,
+      picture: json['picture'] as String?,
     );
 
 Map<String, dynamic> _$$VolunteerImplToJson(_$VolunteerImpl instance) =>
@@ -30,4 +33,7 @@ Map<String, dynamic> _$$VolunteerImplToJson(_$VolunteerImpl instance) =>
       'availabilityDuration': instance.availabilityDuration,
       'phoneNumber': instance.phoneNumber,
       'email': instance.email,
+      'description': instance.description,
+      'credits': instance.credits,
+      'picture': instance.picture,
     };

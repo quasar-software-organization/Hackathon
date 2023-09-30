@@ -26,6 +26,7 @@ mixin _$Project {
   DateTime? get startDate => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  String get nonProfitId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $ProjectCopyWith<$Res> {
       String description,
       DateTime? startDate,
       DateTime? endDate,
-      String status});
+      String status,
+      String nonProfitId});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$ProjectCopyWithImpl<$Res, $Val extends Project>
     Object? startDate = freezed,
     Object? endDate = freezed,
     Object? status = null,
+    Object? nonProfitId = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -91,6 +94,10 @@ class _$ProjectCopyWithImpl<$Res, $Val extends Project>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      nonProfitId: null == nonProfitId
+          ? _value.nonProfitId
+          : nonProfitId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$ProjectImplCopyWith<$Res> implements $ProjectCopyWith<$Res> {
       String description,
       DateTime? startDate,
       DateTime? endDate,
-      String status});
+      String status,
+      String nonProfitId});
 }
 
 /// @nodoc
@@ -155,10 +163,10 @@ class __$$ProjectImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      nonProfitId: null == status
+      nonProfitId: null == nonProfitId
           ? _value.nonProfitId
           : nonProfitId // ignore: cast_nullable_to_non_nullable
-      as String,
+              as String,
     ));
   }
 }
@@ -173,7 +181,7 @@ class _$ProjectImpl implements _Project {
       this.startDate,
       this.endDate,
       required this.status,
-      required String this.nonProfitId});
+      required this.nonProfitId});
 
   factory _$ProjectImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProjectImplFromJson(json);
@@ -211,13 +219,14 @@ class _$ProjectImpl implements _Project {
                 other.startDate == startDate) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.nonProfitId, nonProfitId) || other.nonProfitId == nonProfitId));
+            (identical(other.nonProfitId, nonProfitId) ||
+                other.nonProfitId == nonProfitId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, description, startDate, endDate, status, nonProfitId);
+  int get hashCode => Object.hash(runtimeType, id, name, description, startDate,
+      endDate, status, nonProfitId);
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +250,7 @@ abstract class _Project implements Project {
       final DateTime? startDate,
       final DateTime? endDate,
       required final String status,
-      required String nonProfitId}) = _$ProjectImpl;
+      required final String nonProfitId}) = _$ProjectImpl;
 
   factory _Project.fromJson(Map<String, dynamic> json) = _$ProjectImpl.fromJson;
 
@@ -257,6 +266,8 @@ abstract class _Project implements Project {
   DateTime? get endDate;
   @override
   String get status;
+  @override
+  String get nonProfitId;
   @override
   @JsonKey(ignore: true)
   _$$ProjectImplCopyWith<_$ProjectImpl> get copyWith =>

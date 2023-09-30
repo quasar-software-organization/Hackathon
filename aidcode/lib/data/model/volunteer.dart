@@ -17,6 +17,9 @@ class Volunteer with _$Volunteer {
     required String availabilityDuration,
     required String phoneNumber,
     required String email,
+    String? description,
+    @Default(0) int credits,
+    String? picture,
   }) = _Volunteer;
 
   factory Volunteer.fromJson(Map<String, Object?> json) =>
