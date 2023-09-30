@@ -19,31 +19,27 @@ class FirestoreService {
   }
 
   Future<Volunteer> getVolunteer(String id) async {
-    // await db.collection(volunteersCollection).get(id);
-    return const Volunteer(
-      id: 'fake',
-      name: 'fake',
-      age: 21,
-      availability: 1,
-      skills: 'fake skills',
-      experience: 'advance',
-      availabilityDuration: '3 months',
-      phoneNumber: '(111) 111-1111',
-      email: 'fake@fake.com',
-    );
+    final snapshot = await db.collection(volunteersCollection).doc(id).get();
+    var v = Volunteer.fromJson(snapshot.data() as Map<String, dynamic>);
+    v = v.copyWith(id: snapshot.id);
+
+    return v;
   }
 
   Future<void> createVolunteerProject(VolunteerProject volunteerProject) async {
     await db.collection(volunteerProjectsCollection).add(volunteerProject.toJson());
   }
 
-  Future<List<Project>> getVolunteerProjects(String id) async {
+  Future<List<Project>> getVolunteerProjects(String volunteerId) async {
+    final snapshot = await db.collection(volunteerProjectsCollection).where('volunteerId', isEqualTo: volunteerId).get();
+
     return [
       const Project(
-        id: 'fake',
-        name: 'fake',
-        description: 'fake project',
-        status: 'fake'
+          id: 'fake',
+          name: 'fake',
+          description: 'fake project',
+          status: 'fake',
+          nonProfitId: 'fake'
       )
     ];
   }
@@ -54,10 +50,11 @@ class FirestoreService {
 
   Future<Project> getProject(String id) async {
     return const Project(
-      id: 'fake',
-      name: 'fake',
-      description: 'fake project',
-      status: 'fake'
+        id: 'fake',
+        name: 'fake',
+        description: 'fake project',
+        status: 'fake',
+        nonProfitId: 'fake'
     );
   }
 
@@ -67,7 +64,8 @@ class FirestoreService {
           id: 'fake',
           name: 'fake',
           description: 'fake project',
-          status: 'fake'
+          status: 'fake',
+          nonProfitId: 'fake'
       )
     ];
   }
@@ -86,7 +84,8 @@ class FirestoreService {
           id: 'fake',
           name: 'fake',
           description: 'fake project',
-          status: 'fake'
+          status: 'fake',
+          nonProfitId: 'fake'
       )
     ];
   }
