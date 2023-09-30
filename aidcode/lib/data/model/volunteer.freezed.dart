@@ -20,7 +20,17 @@ Volunteer _$VolunteerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Volunteer {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  int get age =>
+      throw _privateConstructorUsedError; // This is measure in hours by day
+  int get availability => throw _privateConstructorUsedError;
+  String get skills => throw _privateConstructorUsedError;
+  String get experience =>
+      throw _privateConstructorUsedError; // Short-term or Long-term
+  String get availabilityDuration => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +43,16 @@ abstract class $VolunteerCopyWith<$Res> {
   factory $VolunteerCopyWith(Volunteer value, $Res Function(Volunteer) then) =
       _$VolunteerCopyWithImpl<$Res, Volunteer>;
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String id,
+      String name,
+      int age,
+      int availability,
+      String skills,
+      String experience,
+      String availabilityDuration,
+      String phoneNumber,
+      String email});
 }
 
 /// @nodoc
@@ -49,12 +68,52 @@ class _$VolunteerCopyWithImpl<$Res, $Val extends Volunteer>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
+    Object? age = null,
+    Object? availability = null,
+    Object? skills = null,
+    Object? experience = null,
+    Object? availabilityDuration = null,
+    Object? phoneNumber = null,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int,
+      availability: null == availability
+          ? _value.availability
+          : availability // ignore: cast_nullable_to_non_nullable
+              as int,
+      skills: null == skills
+          ? _value.skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as String,
+      experience: null == experience
+          ? _value.experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as String,
+      availabilityDuration: null == availabilityDuration
+          ? _value.availabilityDuration
+          : availabilityDuration // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -68,7 +127,16 @@ abstract class _$$VolunteerImplCopyWith<$Res>
       __$$VolunteerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call(
+      {String id,
+      String name,
+      int age,
+      int availability,
+      String skills,
+      String experience,
+      String availabilityDuration,
+      String phoneNumber,
+      String email});
 }
 
 /// @nodoc
@@ -82,12 +150,52 @@ class __$$VolunteerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
+    Object? age = null,
+    Object? availability = null,
+    Object? skills = null,
+    Object? experience = null,
+    Object? availabilityDuration = null,
+    Object? phoneNumber = null,
+    Object? email = null,
   }) {
     return _then(_$VolunteerImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as int,
+      availability: null == availability
+          ? _value.availability
+          : availability // ignore: cast_nullable_to_non_nullable
+              as int,
+      skills: null == skills
+          ? _value.skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as String,
+      experience: null == experience
+          ? _value.experience
+          : experience // ignore: cast_nullable_to_non_nullable
+              as String,
+      availabilityDuration: null == availabilityDuration
+          ? _value.availabilityDuration
+          : availabilityDuration // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -96,17 +204,44 @@ class __$$VolunteerImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$VolunteerImpl implements _Volunteer {
-  const _$VolunteerImpl({required this.name});
+  const _$VolunteerImpl(
+      {required this.id,
+      required this.name,
+      required this.age,
+      required this.availability,
+      required this.skills,
+      required this.experience,
+      required this.availabilityDuration,
+      required this.phoneNumber,
+      required this.email});
 
   factory _$VolunteerImpl.fromJson(Map<String, dynamic> json) =>
       _$$VolunteerImplFromJson(json);
 
   @override
+  final String id;
+  @override
   final String name;
+  @override
+  final int age;
+// This is measure in hours by day
+  @override
+  final int availability;
+  @override
+  final String skills;
+  @override
+  final String experience;
+// Short-term or Long-term
+  @override
+  final String availabilityDuration;
+  @override
+  final String phoneNumber;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'Volunteer(name: $name)';
+    return 'Volunteer(id: $id, name: $name, age: $age, availability: $availability, skills: $skills, experience: $experience, availabilityDuration: $availabilityDuration, phoneNumber: $phoneNumber, email: $email)';
   }
 
   @override
@@ -114,12 +249,25 @@ class _$VolunteerImpl implements _Volunteer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$VolunteerImpl &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.availability, availability) ||
+                other.availability == availability) &&
+            (identical(other.skills, skills) || other.skills == skills) &&
+            (identical(other.experience, experience) ||
+                other.experience == experience) &&
+            (identical(other.availabilityDuration, availabilityDuration) ||
+                other.availabilityDuration == availabilityDuration) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, id, name, age, availability,
+      skills, experience, availabilityDuration, phoneNumber, email);
 
   @JsonKey(ignore: true)
   @override
@@ -136,13 +284,38 @@ class _$VolunteerImpl implements _Volunteer {
 }
 
 abstract class _Volunteer implements Volunteer {
-  const factory _Volunteer({required final String name}) = _$VolunteerImpl;
+  const factory _Volunteer(
+      {required final String id,
+      required final String name,
+      required final int age,
+      required final int availability,
+      required final String skills,
+      required final String experience,
+      required final String availabilityDuration,
+      required final String phoneNumber,
+      required final String email}) = _$VolunteerImpl;
 
   factory _Volunteer.fromJson(Map<String, dynamic> json) =
       _$VolunteerImpl.fromJson;
 
   @override
+  String get id;
+  @override
   String get name;
+  @override
+  int get age;
+  @override // This is measure in hours by day
+  int get availability;
+  @override
+  String get skills;
+  @override
+  String get experience;
+  @override // Short-term or Long-term
+  String get availabilityDuration;
+  @override
+  String get phoneNumber;
+  @override
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$VolunteerImplCopyWith<_$VolunteerImpl> get copyWith =>
