@@ -15,14 +15,14 @@ class VolunteerScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          sliverAppBar(),
+          sliverAppBar(context),
           SliverToBoxAdapter(
             child: Center(child: ProfileAvatar(size: Size(size.width * 0.8, size.width * 0.8))),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: ProfileInfo(),
           ),
-          SliverPadding(
+          const SliverPadding(
             padding: EdgeInsets.all(20),
             sliver: SliverToBoxAdapter(
               child: Row(
@@ -44,15 +44,15 @@ class VolunteerScreen extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(
+          const SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 20),
             sliver: SliverToBoxAdapter(
               child: ProfileDescription(),
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: ProfileDonate(),
-          )
+          ),
         ],
       ),
     );

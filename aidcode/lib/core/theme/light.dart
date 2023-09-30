@@ -10,9 +10,10 @@ ThemeData light(BuildContext context) => ThemeData(
         primary: AppColor.primary,
         secondary: AppColor.primary,
       ),
-      appBarTheme: const AppBarTheme(
-        titleTextStyle: TextStyle(color: Colors.white, fontSize: 24),
-        iconTheme: IconThemeData(color: Colors.white),
+      appBarTheme: AppBarTheme(
+        color: ColorScheme.fromSeed(seedColor: AppColor.primary).background,
+        titleTextStyle: const TextStyle(color: Colors.black, fontSize: 24),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       useMaterial3: true,
       inputDecorationTheme: InputDecorationTheme(
