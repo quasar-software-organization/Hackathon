@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';

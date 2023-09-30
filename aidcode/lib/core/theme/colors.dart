@@ -8,5 +8,6 @@ abstract class AppColor {
   static const primary = Color(0xFFFCB527);
   static const secondary = Color(0xFF000080);
   static const scaffold = Color(0xFFEDEDED);
+  static const link = Color(0xFF1464DB);
   
 }
