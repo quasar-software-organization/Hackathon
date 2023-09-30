@@ -1,4 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
+import 'package:aidcode/domain/entities/proyect_entity.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:aidcode/routes.dart';
@@ -6,11 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key});
+  const ProjectCard({super.key, required this.proyectEntity});
+
+  final ProyectEntity proyectEntity;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       onTap: () => context
@@ -32,7 +34,7 @@ class ProjectCard extends StatelessWidget {
                         height: 150,
                         width: 150,
                         child: Image.asset(
-                          AppAssets.projectLogo,
+                          proyectEntity.logo,
                           fit: BoxFit.cover,
                           height: 150,
                         )),
