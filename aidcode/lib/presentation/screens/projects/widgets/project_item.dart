@@ -13,11 +13,13 @@ class ProjectCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context.goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": "1"}),
+      onTap: () => context
+          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": "1"}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -38,28 +40,23 @@ class ProjectCard extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('WW', style: TextStyle(color: AppColor.secondary, fontWeight: FontWeight.bold, fontSize: 24)),
-                        Container(
-                            decoration: BoxDecoration(color: AppColor.secondary, borderRadius: BorderRadius.circular(10.0)),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-                              child: Text(
-                                'environment',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
                         SizedBox(
-                          width: size.width - 225,
-                          child: const Row(
-                            children: [
-                              Expanded(
-                                child: Text('I need an engineer to develop an app',
-                                    style: TextStyle(color: AppColor.secondary), overflow: TextOverflow.clip, maxLines: 2),
+                          width: MediaQuery.of(context).size.width * .5,
+                          child: const Text('Habitat for Humanity',
+                              style: TextStyle(
+                                color: AppColor.secondary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 23,
                               ),
-                            ],
-                          ),
+                              maxLines:
+                                  2, // Establece el número máximo de líneas en 2
+                              overflow: TextOverflow
+                                  .clip // Usa elipsis (...) si el texto se desborda
+                              ),
                         ),
-                        const Text('7/21/2023', style: TextStyle(color: AppColor.secondary, fontWeight: FontWeight.bold)),
+                        _detailSection(title: 'Type', subtitle: 'Environment'),
+                        _detailSection(title: 'Need', subtitle: 'webapp'),
+                        _detailSection(title: 'Date', subtitle: '7/21/2023'),
                       ],
                     ),
                   ],
@@ -71,6 +68,25 @@ class ProjectCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _detailSection({required String title, required String subtitle}) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '$title:',
+          style: const TextStyle(color: AppColor.primary, fontSize: 14),
+        ),
+        Text(
+          subtitle,
+          style: const TextStyle(
+              color: AppColor.secondary,
+              fontSize: 16,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }
