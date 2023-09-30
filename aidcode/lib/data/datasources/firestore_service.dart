@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/data/model/volunteer.dart';
@@ -33,19 +35,23 @@ class FirestoreService {
   }
 
   Future<List<Project>> getVolunteerProjects(String volunteerId) async {
-    final snapshot = await db
+    final query = await db
         .collection(volunteerProjectsCollection)
         .where('volunteerId', isEqualTo: volunteerId)
         .get();
 
-    return [
-      const Project(
-          id: 'fake',
-          name: 'fake',
-          description: 'fake project',
-          status: 'fake',
-          nonProfitId: 'fake')
-    ];
+    List<Project> projects = [];
+    for (var snapshot in query.docs) {
+      final vpId = VolunteerProject.fromJson(snapshot.data()).projectId;
+
+      final pQuery = await db.collection(projectsCollection).doc(vpId).get();
+
+      var p = Project.fromJson(pQuery.data() as Map<String, dynamic>);
+      p = p.copyWith(id: vpId);
+      projects.add(p);
+    }
+
+    return projects;
   }
 
   Future<void> createProject(Project project) async {
