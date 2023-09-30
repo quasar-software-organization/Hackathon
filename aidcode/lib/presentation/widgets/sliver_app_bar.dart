@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 appBar(
   BuildContext context, {
+  bool automaticallyImplyLeading = true,
   Widget? leading,
   VoidCallback? onPressInfo,
   VoidCallback? onBack,
@@ -12,6 +13,7 @@ appBar(
 }) {
   final canPop = Navigator.of(context).canPop();
   return AppBar(
+    automaticallyImplyLeading: automaticallyImplyLeading,
     leading: SizedBox(
       child: leading == null && canPop
           ? IconButton(

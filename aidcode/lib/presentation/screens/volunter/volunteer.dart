@@ -29,17 +29,7 @@ class VolunteerScreen extends StatelessWidget {
             return const LoadingWidget();
           }
 
-          final volunteer = state.volunteer ??
-              Volunteer(
-                name: 'name',
-                age: 1,
-                availability: 1,
-                skills: 'skills',
-                experience: 'experience',
-                availabilityDuration: 'availabilityDuration',
-                phoneNumber: 'phoneNumber',
-                email: 'email',
-              );
+          final volunteer = state.volunteer;
           final projects = state.volunteerProjects;
 
           return CustomScrollView(

@@ -32,13 +32,15 @@ class ProjectCard extends StatelessWidget {
                 Container(
                   height: double.maxFinite,
                   width: 150,
-                  padding: const EdgeInsets.all(4.0),
+                  padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColor.secondary, width: 4),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Image.asset(AppAssets.americanCancerSociety,
-                      fit: BoxFit.fill),
+                  child: Image.asset(
+                    AppAssets.americanCancerSociety,
+                    fit: BoxFit.contain,
+                  ),
                 ),
                 const SizedBox.square(dimension: 10.0),
                 Expanded(
