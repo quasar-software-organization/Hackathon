@@ -1,7 +1,7 @@
 import 'package:aidcode/presentation/screens/home.dart';
 import 'package:aidcode/presentation/screens/nonprofits.dart';
 import 'package:aidcode/presentation/screens/project.dart';
-import 'package:aidcode/presentation/screens/volunteer.dart';
+import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
