@@ -1,6 +1,7 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
+import 'package:aidcode/presentation/screens/about/about_screen.dart';
 
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/loading_widget.dart';
@@ -16,11 +17,14 @@ class NonProfitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NonProfitBloc, NonProfitState>(builder: (context, state) {
+    return BlocBuilder<NonProfitBloc, NonProfitState>(
+        builder: (context, state) {
       NonProfit? np = state.nonProfit;
 
       return Scaffold(
-        body: np == null || !state.hasInitialized ? const LoadingWidget() : _body(np, state.projects, context),
+        body: np == null || !state.hasInitialized
+            ? const LoadingWidget()
+            : _body(np, state.projects, context),
       );
     });
   }
@@ -30,22 +34,28 @@ class NonProfitsScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: CustomScrollView(
         slivers: [
-          sliverAppBar(
-            context,
-            onBack: () {
-              context.pop();
-            },
-            onPressInfo: () {},
-          ),
+          sliverAppBar(context, onBack: () {
+            context.pop();
+          }, onPressInfo: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AboutUsScreen()));
+          }),
           SliverToBoxAdapter(
             child: Center(
-                child:
-                    Text(np.name, style: const TextStyle(color: AppColor.secondary, fontSize: 24, fontWeight: FontWeight.bold))),
+                child: Text(np.name,
+                    style: const TextStyle(
+                        color: AppColor.secondary,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold))),
           ),
           const SliverToBoxAdapter(child: SizedBox.square(dimension: 20)),
           SliverList(
             delegate: SliverChildListDelegate.fixed([
-              const Text('Description', style: TextStyle(color: AppColor.secondary, fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text('Description',
+                  style: TextStyle(
+                      color: AppColor.secondary,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold)),
               Text(
                 np.missionAndVision,
                 style: const TextStyle(
@@ -57,7 +67,11 @@ class NonProfitsScreen extends StatelessWidget {
             ]),
           ),
           const SliverToBoxAdapter(
-            child: Text('Projects', style: TextStyle(color: AppColor.secondary, fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text('Projects',
+                style: TextStyle(
+                    color: AppColor.secondary,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
