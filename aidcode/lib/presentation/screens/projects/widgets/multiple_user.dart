@@ -10,7 +10,13 @@ class MultipleUser extends StatelessWidget {
     return Row(
       children: [
         Row(
-          children: List.generate(4, (index) => Image.asset(AppAssets.imageUserProfileMock)).toList(),
+          children: List.generate(
+            4,
+            (index) => Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              child: Image.asset(AppAssets.imageUserProfileMock),
+            ),
+          ).toList(),
         ),
         const SizedBox.square(dimension: 5.0),
         const Text('+23', style: TextStyle(color: AppColor.secondary, fontSize: 24)),

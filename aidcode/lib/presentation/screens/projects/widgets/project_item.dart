@@ -1,27 +1,27 @@
 import 'package:aidcode/core/theme/colors.dart';
-import 'package:aidcode/domain/entities/proyect_entity.dart';
+import 'package:aidcode/data/model/project.dart';
+
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/resources/resources.dart';
+
 import 'package:aidcode/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key, required this.proyectEntity});
+  final Project project;
 
-  final ProyectEntity proyectEntity;
+  const ProjectCard({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
-      onTap: () => context
-          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": "1"}),
+      onTap: () => context.goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": project.id ?? "0"}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20.0)),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -30,35 +30,34 @@ class ProjectCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                        height: 150,
-                        width: 150,
-                        child: Image.asset(
-                          proyectEntity.logo,
-                          fit: BoxFit.cover,
-                          height: 150,
-                        )),
+                    Container(
+                      height: 150,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColor.secondary, width: 4),
+                        borderRadius: BorderRadius.circular(12),
+                        image: const DecorationImage(
+                          image: AssetImage(AppAssets.americanCancerSociety),
+                        ),
+                      ),
+                    ),
                     const SizedBox.square(dimension: 10.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .5,
-                          child: const Text('Habitat for Humanity',
-                              style: TextStyle(
+                          child: Text(project.name,
+                              style: const TextStyle(
                                 color: AppColor.secondary,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 23,
                               ),
-                              maxLines:
-                                  2, // Establece el número máximo de líneas en 2
-                              overflow: TextOverflow
-                                  .clip // Usa elipsis (...) si el texto se desborda
-                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.clip),
                         ),
-                        _detailSection(title: 'Type', subtitle: 'Environment'),
-                        _detailSection(title: 'Need', subtitle: 'webapp'),
-                        _detailSection(title: 'Date', subtitle: '7/21/2023'),
+                        _detailSection(title: 'Type', subtitle: project.description),
+                        _detailSection(title: 'Need', subtitle: project.tag),
                       ],
                     ),
                   ],
@@ -83,10 +82,7 @@ class ProjectCard extends StatelessWidget {
         ),
         Text(
           subtitle,
-          style: const TextStyle(
-              color: AppColor.secondary,
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
+          style: const TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ],
     );

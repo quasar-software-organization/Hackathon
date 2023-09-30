@@ -17,6 +17,7 @@ _$ProjectImpl _$$ProjectImplFromJson(Map<String, dynamic> json) =>
       endDate: json['endDate'] == null
           ? null
           : DateTime.parse(json['endDate'] as String),
+      tag: json['tag'] as String? ?? "webapp",
       status: json['status'] as String,
       nonProfitId: json['nonProfitId'] as String,
     );
@@ -28,6 +29,7 @@ Map<String, dynamic> _$$ProjectImplToJson(_$ProjectImpl instance) =>
       'description': instance.description,
       'startDate': instance.startDate?.toIso8601String(),
       'endDate': instance.endDate?.toIso8601String(),
+      'tag': instance.tag,
       'status': instance.status,
       'nonProfitId': instance.nonProfitId,
     };

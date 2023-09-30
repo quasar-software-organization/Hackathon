@@ -11,6 +11,7 @@ class Project with _$Project {
     required String description,
     DateTime? startDate,
     DateTime? endDate,
+    @Default("webapp") String tag,
     required String status,
     required String nonProfitId,
   }) = _Project;
