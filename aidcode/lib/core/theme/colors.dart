@@ -7,5 +7,6 @@ abstract class AppColor {
   // static const primary = Color.fromARGB(255, 67, 104, 235);
   static const primary = Color(0xFFFCB527);
   static const secondary = Color(0xFF000080);
+  static const scaffold = Color(0xFFEDEDED);
   
 }
