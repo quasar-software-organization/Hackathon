@@ -14,8 +14,7 @@ class NonProfitsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NonProfitBloc, NonProfitState>(
-        builder: (context, state) {
+    return BlocBuilder<NonProfitBloc, NonProfitState>(builder: (context, state) {
       NonProfit? np = state.nonProfit;
 
       return Scaffold(
@@ -42,20 +41,13 @@ class NonProfitsScreen extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Center(
-                child: Text(np.name,
-                    style: const TextStyle(
-                        color: AppColor.secondary,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold))),
+                child:
+                    Text(np.name, style: const TextStyle(color: AppColor.secondary, fontSize: 24, fontWeight: FontWeight.bold))),
           ),
           const SliverToBoxAdapter(child: SizedBox.square(dimension: 20)),
           SliverList(
             delegate: SliverChildListDelegate.fixed([
-              const Text('Description',
-                  style: TextStyle(
-                      color: AppColor.secondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold)),
+              const Text('Description', style: TextStyle(color: AppColor.secondary, fontSize: 20, fontWeight: FontWeight.bold)),
               Text(np.missionAndVision,
                   style: const TextStyle(
                     color: AppColor.secondary,
@@ -65,16 +57,14 @@ class NonProfitsScreen extends StatelessWidget {
             ]),
           ),
           const SliverToBoxAdapter(
-            child: Text('Projects',
-                style: TextStyle(
-                    color: AppColor.secondary,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
+            child: Text('Projects', style: TextStyle(color: AppColor.secondary, fontSize: 20, fontWeight: FontWeight.bold)),
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                return ProjectCard(project: projects[index],);
+                return ProjectCard(
+                  project: projects[index],
+                );
               },
               childCount: projects.length,
             ),
