@@ -6,15 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ProjectCard extends StatelessWidget {
-  const ProjectCard({super.key});
+  const ProjectCard(
+      {super.key,
+      required this.name,
+      required this.type,
+      required this.status,
+      required this.date,
+      required this.projectId});
+
+  final String projectId;
+  final String name;
+  final String type;
+  final String status;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       onTap: () => context
-          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": "1"}),
+          .goNamed(MyRoutes.projectDetail.name, pathParameters: {"id": projectId}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
@@ -42,8 +53,8 @@ class ProjectCard extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: MediaQuery.of(context).size.width * .5,
-                          child: const Text('Habitat for Humanity',
-                              style: TextStyle(
+                          child:  Text(name,
+                              style: const TextStyle(
                                 color: AppColor.secondary,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 23,
@@ -54,15 +65,15 @@ class ProjectCard extends StatelessWidget {
                                   .clip // Usa elipsis (...) si el texto se desborda
                               ),
                         ),
-                        _detailSection(title: 'Type', subtitle: 'Environment'),
-                        _detailSection(title: 'Need', subtitle: 'webapp'),
-                        _detailSection(title: 'Date', subtitle: '7/21/2023'),
+                        _detailSection(title: 'Type', subtitle: type),
+                        _detailSection(title: 'Status', subtitle: status),
+                        _detailSection(title: 'Date', subtitle: date),
                       ],
                     ),
                   ],
                 ),
-                const SizedBox.square(dimension: 10.0),
-                const MultipleUser()
+                // const SizedBox.square(dimension: 10.0),
+                // const MultipleUser()
               ],
             ),
           ),
