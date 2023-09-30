@@ -6,7 +6,9 @@ part 'non_profit.g.dart';
 @freezed
 class NonProfit with _$NonProfit {
   const factory NonProfit({
+    required String id,
     required String name,
+    required String missionAndVision,
   }) = _NonProfit;
 
   factory NonProfit.fromJson(Map<String, Object?> json) =>
