@@ -29,6 +29,26 @@ class FirestoreService {
     return v;
   }
 
+  Future<List<Volunteer>> getProjectVolunteers(String projectId) async {
+    final query = await db
+        .collection(volunteerProjectsCollection)
+        .where('projectId', isEqualTo: projectId)
+        .get();
+
+    List<Volunteer> volunteers = [];
+    for (var snapshot in query.docs) {
+      final vId = VolunteerProject.fromJson(snapshot.data()).volunteerId;
+
+      final vQuery = await db.collection(volunteersCollection).doc(vId).get();
+
+      var v = Volunteer.fromJson(vQuery.data() as Map<String, dynamic>);
+      v = v.copyWith(id: vId);
+      volunteers.add(v);
+    }
+
+    return volunteers;
+  }
+
   Future<void> createVolunteerProject(VolunteerProject volunteerProject) async {
     await db
         .collection(volunteerProjectsCollection)
