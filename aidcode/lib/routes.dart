@@ -1,6 +1,6 @@
 import 'package:aidcode/presentation/screens/home.dart';
 import 'package:aidcode/presentation/screens/nonprofits.dart';
-import 'package:aidcode/presentation/screens/project.dart';
+import 'package:aidcode/presentation/screens/project/project.dart';
 import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
 import 'package:flutter/material.dart';
