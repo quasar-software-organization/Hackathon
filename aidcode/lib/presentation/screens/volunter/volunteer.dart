@@ -1,4 +1,3 @@
-import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_avatar.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_description.dart';
@@ -12,7 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/theme/colors.dart';
-import '../../../domain/entities/proyect_entity.dart';
 import '../../bloc/volunteer_bloc/volunteer_bloc.dart';
 
 class VolunteerScreen extends StatelessWidget {
@@ -97,6 +95,7 @@ class VolunteerScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             ProfileAvatar(
+                                picture: volunteer.picture,
                                 size: Size(size.width * 0.8, size.width * 0.8)),
                             ProfileInfo(
                               name: volunteer.name,
@@ -106,13 +105,18 @@ class VolunteerScreen extends StatelessWidget {
                             ProfileJob(
                               availability: volunteer.availabilityDuration,
                             ),
-                            const ProfileDescription(),
+                            Visibility(
+                              visible: volunteer.description != null,
+                              child: ProfileDescription(
+                                description: volunteer.description!,
+                              ),
+                            ),
                             Padding(
                               padding: const EdgeInsets.all(16.0),
                               child: Column(
                                 children: [
                                   ProfileOptionBottom(
-                                    title: "158",
+                                    title: volunteer.credits.toString(),
                                     subtitle: "Collected credits",
                                   ),
                                   ProfileOptionBottom(
@@ -122,8 +126,8 @@ class VolunteerScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            ...mockProjects
-                                .map((e) => ProjectCard(proyectEntity: e))
+                            ...projects
+                                .map((e) => ProjectCard(project: e))
                                 .toList()
                           ],
                         ),
