@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
     return InkWell(
       onTap: () => showCupertinoModalPopup(
         context: context,
-        builder: (_) => ProjectDetails(),
+        builder: (_) => const ProjectDetails(),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -65,11 +65,8 @@ class ProjectCard extends StatelessWidget {
                           child: const Row(
                             children: [
                               Expanded(
-                                child: Text(
-                                    'I need an engineer to develop an ap sasasp',
-                                    style: TextStyle(color: AppColor.secondary),
-                                    overflow: TextOverflow.clip,
-                                    maxLines: 2),
+                                child: Text('I need an engineer to develop an app',
+                                    style: TextStyle(color: AppColor.secondary), overflow: TextOverflow.clip, maxLines: 2),
                               ),
                             ],
                           ),

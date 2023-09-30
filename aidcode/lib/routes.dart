@@ -1,4 +1,4 @@
-import 'package:aidcode/presentation/screens/nonprofits.dart';
+import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
 import 'package:aidcode/presentation/screens/projects/projects.dart';
 import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
