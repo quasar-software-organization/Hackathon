@@ -60,12 +60,11 @@ class FirestoreService {
   }
 
   Future<Project> getProject(String id) async {
-    return const Project(
-        id: 'fake',
-        name: 'fake',
-        description: 'fake project',
-        status: 'fake',
-        nonProfitId: 'fake');
+    final snapshot = await db.collection(projectsCollection).doc(id).get();
+    var p = Project.fromJson(snapshot.data() as Map<String, dynamic>);
+    p = p.copyWith(id: snapshot.id);
+
+    return p;
   }
 
   Future<List<Project>> getProjects() async {
