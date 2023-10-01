@@ -4,6 +4,7 @@ import 'package:aidcode/presentation/screens/project_details/widgets/project_soc
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
 import 'package:aidcode/presentation/widgets/generic_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../resources/resources.dart';
 import '../../widgets/sliver_app_bar.dart';
@@ -24,6 +25,7 @@ class ProjectDetails extends StatelessWidget {
           slivers: [
             sliverAppBar(
               context,
+              training: const SizedBox.shrink(),
               leading: SizedBox(
                 width: 40,
                 height: 40,
@@ -71,7 +73,30 @@ class ProjectDetails extends StatelessWidget {
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                useRootNavigator: true,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Contribute'),
+                                    content: const Text(
+                                      'You have been added to the Opensource Git repo. Check your email for an invitation',
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          context.pop();
+                                          context.pop();
+                                        },
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ),
                         const Padding(
