@@ -17,7 +17,9 @@ appBar(
   return AppBar(
     automaticallyImplyLeading: automaticallyImplyLeading,
     toolbarHeight: 65.0,
-    leading: SizedBox(
+    centerTitle: true,
+    leading: Container(
+      padding: const EdgeInsets.only(left: 16),
       width: size.width * 0.15,
       child: leading == null && canPop
           ? IconButton(
