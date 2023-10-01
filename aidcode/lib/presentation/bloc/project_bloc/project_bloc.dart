@@ -22,9 +22,30 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
             List<Project> projects = await repository.getProjects();
             emit(state.copyWith(projects: projects, hasInitialized: true));
           },
-          putProject: (project) async {},
-          getProject: (id) async {},
-          getProjects: () async {},
+          putProject: (project, nonProfitName) async {
+            emit(state.copyWith(status: ProjectStatus.loading));
+
+            await repository.putProject(
+              project: project,
+              nonProfitName: nonProfitName,
+            );
+
+            emit(state.copyWith(status: ProjectStatus.loaded));
+          },
+          getProject: (id) async {
+            emit(state.copyWith(status: ProjectStatus.loading));
+
+            Project project = await repository.getProject(id: id);
+
+            emit(state.copyWith(project: project));
+          },
+          getProjects: () async {
+            emit(state.copyWith(status: ProjectStatus.loading));
+
+            List<Project> projects = await repository.getProjects();
+
+            emit(state.copyWith(projects: projects));
+          },
         );
       },
     );

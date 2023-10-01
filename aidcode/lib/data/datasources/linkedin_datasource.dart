@@ -12,7 +12,7 @@ abstract class LinkedinDatasource {
 class LinkedinDatasourceImpl implements LinkedinDatasource {
   final Dio dio;
 
-  LinkedinDatasourceImpl({required this.dio});
+  LinkedinDatasourceImpl({@Named('LinkedinDio') required this.dio});
 
   @override
   Future<void> createPost(

@@ -45,7 +45,7 @@ class NonProfitsScreen extends StatelessWidget {
                         color: AppColor.secondary,
                       ),
                       onPressed: () {
-                        context.goNamed(MyRoutes.projectForm.name);
+                        context.goNamed(MyRoutes.projectForm.name, extra: np);
                       },
                       widget: const Center(
                         child: Text(

@@ -14,7 +14,7 @@ abstract class GithubDatasource {
 class GithubDatasourceImpl implements GithubDatasource {
   final Dio dio;
 
-  GithubDatasourceImpl({required this.dio});
+  GithubDatasourceImpl({@Named('GithubDio') required this.dio});
 
   @override
   Future<void> createProject({
