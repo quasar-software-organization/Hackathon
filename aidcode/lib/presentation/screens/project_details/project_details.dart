@@ -64,7 +64,7 @@ class ProjectDetails extends StatelessWidget {
                             width: size.width * 0.6,
                             widget: const Center(
                               child: Text(
-                                "Add",
+                                "Contribute",
                                 style: TextStyle(
                                     color: AppColor.primary,
                                     fontSize: 20,
