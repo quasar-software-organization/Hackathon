@@ -89,15 +89,18 @@ class FirestoreService {
 
   Future<List<Project>> getProjects() async {
     final queryRes = await db.collection(projectsCollection).get();
-    var p = queryRes.docs
-        .map((snapshot) => Project.fromJson(snapshot.data()))
-        .toList();
+    var p = queryRes.docs.map((snapshot) {
+      var project = Project.fromJson(snapshot.data());
+      project = project.copyWith(id: snapshot.id);
+      return project;
+    }).toList();
 
     return p;
   }
 
   Future<void> updateProject(project) async {
-    final snapshot = await db.collection(projectsCollection).doc(project.id).get();
+    final snapshot =
+        await db.collection(projectsCollection).doc(project.id).get();
 
     var p = snapshot.reference.update(project.toJson());
   }
