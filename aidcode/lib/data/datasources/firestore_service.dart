@@ -102,7 +102,7 @@ class FirestoreService {
     final snapshot =
         await db.collection(projectsCollection).doc(project.id).get();
 
-    var p = snapshot.reference.update(project.toJson());
+    snapshot.reference.update(project.toJson());
   }
 
   Future<void> createNonProfit(NonProfit nonProfit) async {
@@ -122,9 +122,11 @@ class FirestoreService {
         .collection(projectsCollection)
         .where('nonProfitId', isEqualTo: nonProfitId)
         .get();
-    var p = queryRes.docs
-        .map((snapshot) => Project.fromJson(snapshot.data()))
-        .toList();
+    var p = queryRes.docs.map((snapshot) {
+      var project = Project.fromJson(snapshot.data());
+      project = project.copyWith(id: snapshot.id);
+      return project;
+    }).toList();
 
     return p;
   }
