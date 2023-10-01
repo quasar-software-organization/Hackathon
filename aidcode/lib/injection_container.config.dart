@@ -64,6 +64,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i8.Repository>(() => _i9.RepositoryImpl(
         gh<_i4.FirestoreService>(),
         gh<_i7.LinkedinDatasource>(),
+        gh<_i6.GithubDatasource>(),
       ));
   gh.factory<_i10.VolunteerBloc>(
       () => _i10.VolunteerBloc(gh<_i8.Repository>()));

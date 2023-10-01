@@ -12,6 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../data/model/non_profit.dart';
+import '../../bloc/project_bloc/project_bloc.dart';
 
 class NonProfitsScreen extends StatelessWidget {
   const NonProfitsScreen({super.key});
@@ -22,45 +23,56 @@ class NonProfitsScreen extends StatelessWidget {
         builder: (context, state) {
       NonProfit? np = state.nonProfit;
       final size = MediaQuery.of(context).size;
-      return Scaffold(
-        body: np == null || !state.hasInitialized
-            ? const LoadingWidget()
-            : _body(np, state.projects, context),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          width: double.maxFinite,
-          color: AppColor.scaffold,
-          height: 120,
-          child: Column(
-            children: [
-              const Divider(color: AppColor.primary, thickness: 4, height: 0.0),
-              Expanded(
-                child: Center(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.2),
-                    height: 60,
-                    child: GenericButton(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColor.secondary,
-                      ),
-                      onPressed: () {
-                        context.goNamed(MyRoutes.projectForm.name, extra: np);
-                      },
-                      widget: const Center(
-                        child: Text(
-                          "Create Project",
-                          style: TextStyle(
-                              color: AppColor.primary,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold),
+      return BlocListener<ProjectBloc, ProjectState>(
+        listener: (context, state) {
+          if (state.status == ProjectStatus.loaded) {
+            context.read<NonProfitBloc>().add(
+                NonProfitEvent.getNonProfitsProjects(nonProfitId: np!.id!));
+          }
+        },
+        child: Scaffold(
+          body: np == null || !state.hasInitialized
+              ? const LoadingWidget()
+              : _body(np, state.projects, context),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Container(
+            width: double.maxFinite,
+            color: AppColor.scaffold,
+            height: 120,
+            child: Column(
+              children: [
+                const Divider(
+                    color: AppColor.primary, thickness: 4, height: 0.0),
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * 0.2),
+                      height: 60,
+                      child: GenericButton(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColor.secondary,
+                        ),
+                        onPressed: () {
+                          context.goNamed(MyRoutes.projectForm.name, extra: np);
+                        },
+                        widget: const Center(
+                          child: Text(
+                            "Create Project",
+                            style: TextStyle(
+                                color: AppColor.primary,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       );

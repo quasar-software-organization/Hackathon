@@ -1,5 +1,6 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
+import 'package:aidcode/presentation/bloc/project_bloc/project_bloc.dart';
 import 'package:aidcode/presentation/screens/project_details/widgets/project_description.dart';
 import 'package:aidcode/presentation/screens/project_details/widgets/project_social_info.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
@@ -20,7 +21,7 @@ class ProjectDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(body: BlocBuilder<NonProfitBloc, NonProfitState>(
+    return Scaffold(body: BlocBuilder<ProjectBloc, ProjectState>(
       builder: (context, state) {
         final project =
             state.projects.firstWhere((element) => element.id == id);

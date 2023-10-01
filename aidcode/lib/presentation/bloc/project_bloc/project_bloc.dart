@@ -29,6 +29,7 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
               project: project,
               nonProfitName: nonProfitName,
             );
+            add(const ProjectEvent.getProjects());
 
             emit(state.copyWith(status: ProjectStatus.loaded));
           },
@@ -40,11 +41,9 @@ class ProjectBloc extends Bloc<ProjectEvent, ProjectState> {
             emit(state.copyWith(project: project));
           },
           getProjects: () async {
-            emit(state.copyWith(status: ProjectStatus.loading));
-
             List<Project> projects = await repository.getProjects();
 
-            emit(state.copyWith(projects: projects));
+            emit(state.copyWith(projects: [...projects]));
           },
         );
       },
