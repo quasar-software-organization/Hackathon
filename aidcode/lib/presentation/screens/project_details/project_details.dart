@@ -25,6 +25,7 @@ class ProjectDetails extends StatelessWidget {
           slivers: [
             sliverAppBar(
               context,
+              training: const SizedBox.shrink(),
               leading: SizedBox(
                 width: 40,
                 height: 40,
