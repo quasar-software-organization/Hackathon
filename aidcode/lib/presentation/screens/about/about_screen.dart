@@ -4,6 +4,7 @@ import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({super.key});
@@ -71,11 +72,25 @@ class LinksSection extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(AppAssets.linkedin),
+              InkWell(
+                onTap: () {
+                  final Uri url =
+                      Uri.parse('https://www.linkedin.com/company/aidcode/');
+
+                  launchUrl(url);
+                },
+                child: Image.asset(AppAssets.linkedin),
+              ),
               const SizedBox.square(dimension: 25.0),
-              Image.asset(AppAssets.facebook),
+              InkWell(
+                onTap: () {},
+                child: Image.asset(AppAssets.facebook),
+              ),
               const SizedBox.square(dimension: 25.0),
-              Image.asset(AppAssets.instagram),
+              InkWell(
+                onTap: () {},
+                child: Image.asset(AppAssets.instagram),
+              ),
               const SizedBox.square(dimension: 25.0),
             ],
           ),

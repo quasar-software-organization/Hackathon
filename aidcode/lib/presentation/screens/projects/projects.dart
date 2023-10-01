@@ -43,7 +43,7 @@ class ProjectsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8),
                           image: DecorationImage(
                             image: NetworkImage(volunteer?.picture ??
-                                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'),
+                                'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
                             fit: BoxFit.cover,
                           ),
                         ),

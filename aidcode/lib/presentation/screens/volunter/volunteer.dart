@@ -1,4 +1,3 @@
-import 'package:aidcode/data/model/volunteer.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_avatar.dart';
 import 'package:aidcode/presentation/screens/volunter/widgets/profile_description.dart';

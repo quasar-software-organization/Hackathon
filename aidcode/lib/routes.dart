@@ -61,10 +61,8 @@ class AppRoute {
                 useTransition: true,
                 name: MyRoutes.projectDetail.name,
                 child: (context, state) {
-                  int id = int.tryParse(state.pathParameters['id'] ?? "0") ?? 0;
-                  return ProjectDetails(
-                    id: id,
-                  );
+                  final id = state.pathParameters['id']!;
+                  return ProjectDetails(id: id);
                 },
               ),
               ResponsiveRoute(
