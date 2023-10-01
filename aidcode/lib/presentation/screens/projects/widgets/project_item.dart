@@ -16,7 +16,7 @@ class ProjectCard extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       onTap: () => context.pushNamed(MyRoutes.projectDetail.name,
-          pathParameters: {"id": project.id ?? "0"}),
+          pathParameters: {"id": project.nonProfitId}),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Card(
@@ -38,7 +38,9 @@ class ProjectCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Image.asset(
-                    AppAssets.americanCancerSociety,
+                    project.nonProfitId == '3yxz1XgeNc6yRmeGaukC'
+                        ? AppAssets.americanCancerSociety
+                        : AppAssets.habitatHumanity,
                     fit: BoxFit.contain,
                   ),
                 ),
