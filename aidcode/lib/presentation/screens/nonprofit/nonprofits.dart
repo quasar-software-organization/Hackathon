@@ -44,7 +44,9 @@ class NonProfitsScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         color: AppColor.secondary,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        context.goNamed(MyRoutes.projectForm.name);
+                      },
                       widget: const Center(
                         child: Text(
                           "Create Project",

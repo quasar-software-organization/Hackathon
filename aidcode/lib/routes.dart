@@ -1,6 +1,7 @@
 import 'package:aidcode/presentation/screens/about/about_screen.dart';
 import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
 import 'package:aidcode/presentation/screens/project_details/project_details.dart';
+import 'package:aidcode/presentation/screens/projects/project_form.dart';
 import 'package:aidcode/presentation/screens/projects/projects.dart';
 import 'package:aidcode/presentation/screens/volunter/volunteer.dart';
 import 'package:aidcode/presentation/screens/welcome.dart';
@@ -8,7 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-enum MyRoutes { welcome, projects, projectDetail, volunteer, nonprofits, aboutUs }
+enum MyRoutes {
+  welcome,
+  projects,
+  projectDetail,
+  volunteer,
+  nonprofits,
+  projectForm,
+  aboutUs
+}
 
 class AppRoute {
   static GoRouter get routes => _routes;
@@ -24,7 +33,8 @@ class AppRoute {
   static const String _projects = 'projects';
   static const String _volunteer = 'volunteer';
   static const String _nonprofits = 'nonprofits';
-  static const String _aboutUs = 'about_us';
+  static const String _projectForm = 'project-form';
+  static const String _aboutUs = 'about-us';
 
   static final _routes = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -72,6 +82,15 @@ class AppRoute {
             child: (context, state) {
               return const NonProfitsScreen();
             },
+            routes: [
+              ResponsiveRoute(
+                path: _projectForm,
+                name: MyRoutes.projectForm.name,
+                child: (context, state) {
+                  return const ProjectFormScreen();
+                },
+              ),
+            ],
           ),
           ResponsiveRoute(
             path: _aboutUs,
@@ -123,9 +142,11 @@ class ResponsiveRoute extends GoRoute {
                 key: state.pageKey,
                 transitionDuration: transitionDuration,
                 child: page,
-                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
                   return FadeTransition(
-                    opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+                    opacity: CurveTween(curve: Curves.easeInOutCirc)
+                        .animate(animation),
                     child: child,
                   );
                 },
