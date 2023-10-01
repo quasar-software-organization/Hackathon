@@ -1,4 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
+import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
 import 'package:aidcode/presentation/screens/project_details/widgets/project_description.dart';
 import 'package:aidcode/presentation/screens/project_details/widgets/project_social_info.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/multiple_user.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../resources/resources.dart';
-import '../../bloc/project_bloc/project_bloc.dart';
 import '../../widgets/sliver_app_bar.dart';
 import 'widgets/project_image.dart';
 
@@ -20,7 +20,7 @@ class ProjectDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(body: BlocBuilder<ProjectBloc, ProjectState>(
+    return Scaffold(body: BlocBuilder<NonProfitBloc, NonProfitState>(
       builder: (context, state) {
         final project =
             state.projects.firstWhere((element) => element.id == id);
