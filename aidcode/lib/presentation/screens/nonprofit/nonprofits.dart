@@ -1,12 +1,12 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:aidcode/presentation/bloc/non_profit_bloc/non_profit_bloc.dart';
-import 'package:aidcode/presentation/screens/about/about_screen.dart';
 
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/generic_button.dart';
 import 'package:aidcode/presentation/widgets/loading_widget.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
+import 'package:aidcode/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -41,8 +41,9 @@ class NonProfitsScreen extends StatelessWidget {
                     height: 60,
                     child: GenericButton(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColor.secondary),
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColor.secondary,
+                      ),
                       onPressed: () {},
                       widget: const Center(
                         child: Text(
@@ -66,7 +67,7 @@ class NonProfitsScreen extends StatelessWidget {
 
   Widget _body(NonProfit np, List<Project> projects, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 140),
+      padding: const EdgeInsets.only(bottom: 120),
       child: CustomScrollView(
         slivers: [
           sliverAppBar(
@@ -75,10 +76,7 @@ class NonProfitsScreen extends StatelessWidget {
               context.pop();
             },
             onPressInfo: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AboutUsScreen()));
+              context.pushNamed(MyRoutes.aboutUs.name);
             },
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 20.0)),

@@ -1,6 +1,5 @@
 import 'package:aidcode/core/theme/colors.dart';
 import 'package:aidcode/presentation/bloc/project_bloc/project_bloc.dart';
-import 'package:aidcode/presentation/screens/about/about_screen.dart';
 import 'package:aidcode/presentation/screens/projects/widgets/project_item.dart';
 import 'package:aidcode/presentation/widgets/loading_widget.dart';
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
@@ -31,10 +30,7 @@ class ProjectsScreen extends StatelessWidget {
                       context.pop();
                     },
                     onPressInfo: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AboutUsScreen()));
+                      context.pushNamed(MyRoutes.aboutUs.name);
                     },
                     leading: InkWell(
                       onTap: () {

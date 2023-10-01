@@ -13,15 +13,16 @@ class AboutUsDescription extends StatelessWidget {
       children: [
         const SizedBox.square(dimension: 10.0),
         const Align(
-            alignment: Alignment.center,
-            child: Text('About Us',
-                style: TextStyle(
-                    color: AppColor.secondary,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600))),
+          alignment: Alignment.center,
+          child: Text(
+            'About Us',
+            style: TextStyle(
+                color: AppColor.secondary,
+                fontSize: 24,
+                fontWeight: FontWeight.w600),
+          ),
+        ),
         const SizedBox.square(dimension: 10),
-        _aboutUsDescriptionText(),
-        const SizedBox.square(dimension: 10.0),
         _aboutUsDescriptionText(),
       ],
     );
@@ -29,20 +30,22 @@ class AboutUsDescription extends StatelessWidget {
 
   RichText _aboutUsDescriptionText() {
     return RichText(
-        text: const TextSpan(
-            style: TextStyle(
-              color: AppColor.secondary,
-            ),
-            children: <TextSpan>[
+      text: const TextSpan(
+        style: TextStyle(
+          fontSize: 18,
+          color: AppColor.secondary,
+        ),
+        children: <TextSpan>[
           TextSpan(
             text: 'aidcode',
             style: TextStyle(
-                color: AppColor.secondary, fontWeight: FontWeight.w600),
+              color: AppColor.secondary,
+              fontWeight: FontWeight.w600,
+            ),
           ),
           TextSpan(
             text:
-                ''' is an innovative app that seeks to help Non Profit organizations
-                 in the United States of America and around the world.
+                ''' is an innovative app that seeks to help Non Profit organizations in the United States of America and around the world.
                   \n It is developed by''',
           ),
           TextSpan(
@@ -54,6 +57,8 @@ class AboutUsDescription extends StatelessWidget {
             text: 'a freelancing group composed of talented young developers,'
                 'designers and entrepreneurs ',
           ),
-        ]));
+        ],
+      ),
+    );
   }
 }
