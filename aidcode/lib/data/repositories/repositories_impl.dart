@@ -6,14 +6,16 @@ import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:aidcode/domain/repositories/repository.dart';
 import 'package:injectable/injectable.dart';
 
+import '../datasources/github_datasource.dart';
 import '../datasources/linkedin_datasource.dart';
 
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
   final FirestoreService fs;
   final LinkedinDatasource linkDS;
+  final GithubDatasource githubDS;
 
-  RepositoryImpl(this.fs, this.linkDS);
+  RepositoryImpl(this.fs, this.linkDS, this.githubDS);
 
   @override
   Future<List<Project>> getNonProfitsProjects(
@@ -55,11 +57,17 @@ class RepositoryImpl implements Repository {
   @override
   Future<void> putProject(
       {required Project project, required String nonProfitName}) async {
+    await fs.createProject(project);
+
     await linkDS.createPost(
       title: project.name,
       description: project.description,
       nonProfitName: nonProfitName,
     );
+    // await githubDS.createProject(
+    //   name: project.name,
+    //   description: project.description,
+    // );
   }
 
   @override

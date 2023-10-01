@@ -38,8 +38,7 @@ abstract class RegisterModule {
       BaseOptions(
         baseUrl: url,
         headers: {
-          'Authorization':
-              const String.fromEnvironment('GITHUB_AUTHORIZATION'),
+          'Authorization': 'Bearer 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',
           'Content-Type': 'application/json',
         },
       ),

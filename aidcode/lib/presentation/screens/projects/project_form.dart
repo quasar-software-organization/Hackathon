@@ -2,6 +2,7 @@ import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/data/model/project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/theme/colors.dart';
@@ -78,10 +79,52 @@ class _ProjectFormScreenState extends State<ProjectFormScreen> {
               },
             );
           } else if (state.status == ProjectStatus.loaded) {
-            if (context.mounted) {
-              context.pop();
-              context.pop();
-            }
+            context.pop();
+
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: Icon(Icons.done, color: Colors.green.shade900),
+                        title: const Text('Project Create'),
+                      ),
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: Icon(Icons.done, color: Colors.green.shade900),
+                        title: const Text('Published to Linkedin'),
+                        trailing: const Icon(
+                          FontAwesomeIcons.linkedin,
+                          color: AppColor.secondary,
+                        ),
+                      ),
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: Icon(Icons.done, color: Colors.green.shade900),
+                        title: const Text('Published to GitHub'),
+                        trailing: const Icon(
+                          FontAwesomeIcons.github,
+                          color: AppColor.secondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        context.pop();
+                      },
+                      child: const Text('OK'),
+                    )
+                  ],
+                );
+              },
+            );
           }
         },
         child: Form(
