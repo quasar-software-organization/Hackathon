@@ -19,7 +19,7 @@ mixin _$ProjectEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Project project) putProject,
+    required TResult Function(Project project, String nonProfitName) putProject,
     required TResult Function(String id) getProject,
     required TResult Function() getProjects,
   }) =>
@@ -27,7 +27,7 @@ mixin _$ProjectEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Project project)? putProject,
+    TResult? Function(Project project, String nonProfitName)? putProject,
     TResult? Function(String id)? getProject,
     TResult? Function()? getProjects,
   }) =>
@@ -35,7 +35,7 @@ mixin _$ProjectEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Project project)? putProject,
+    TResult Function(Project project, String nonProfitName)? putProject,
     TResult Function(String id)? getProject,
     TResult Function()? getProjects,
     required TResult orElse(),
@@ -124,7 +124,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Project project) putProject,
+    required TResult Function(Project project, String nonProfitName) putProject,
     required TResult Function(String id) getProject,
     required TResult Function() getProjects,
   }) {
@@ -135,7 +135,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Project project)? putProject,
+    TResult? Function(Project project, String nonProfitName)? putProject,
     TResult? Function(String id)? getProject,
     TResult? Function()? getProjects,
   }) {
@@ -146,7 +146,7 @@ class _$InitImpl implements _Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Project project)? putProject,
+    TResult Function(Project project, String nonProfitName)? putProject,
     TResult Function(String id)? getProject,
     TResult Function()? getProjects,
     required TResult orElse(),
@@ -205,7 +205,7 @@ abstract class _$$PutProjectImplCopyWith<$Res> {
           _$PutProjectImpl value, $Res Function(_$PutProjectImpl) then) =
       __$$PutProjectImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Project project});
+  $Res call({Project project, String nonProfitName});
 
   $ProjectCopyWith<$Res> get project;
 }
@@ -222,12 +222,17 @@ class __$$PutProjectImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? project = null,
+    Object? nonProfitName = null,
   }) {
     return _then(_$PutProjectImpl(
       project: null == project
           ? _value.project
           : project // ignore: cast_nullable_to_non_nullable
               as Project,
+      nonProfitName: null == nonProfitName
+          ? _value.nonProfitName
+          : nonProfitName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -243,14 +248,16 @@ class __$$PutProjectImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PutProjectImpl implements _PutProject {
-  const _$PutProjectImpl({required this.project});
+  const _$PutProjectImpl({required this.project, required this.nonProfitName});
 
   @override
   final Project project;
+  @override
+  final String nonProfitName;
 
   @override
   String toString() {
-    return 'ProjectEvent.putProject(project: $project)';
+    return 'ProjectEvent.putProject(project: $project, nonProfitName: $nonProfitName)';
   }
 
   @override
@@ -258,11 +265,13 @@ class _$PutProjectImpl implements _PutProject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PutProjectImpl &&
-            (identical(other.project, project) || other.project == project));
+            (identical(other.project, project) || other.project == project) &&
+            (identical(other.nonProfitName, nonProfitName) ||
+                other.nonProfitName == nonProfitName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, project);
+  int get hashCode => Object.hash(runtimeType, project, nonProfitName);
 
   @JsonKey(ignore: true)
   @override
@@ -274,35 +283,35 @@ class _$PutProjectImpl implements _PutProject {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Project project) putProject,
+    required TResult Function(Project project, String nonProfitName) putProject,
     required TResult Function(String id) getProject,
     required TResult Function() getProjects,
   }) {
-    return putProject(project);
+    return putProject(project, nonProfitName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Project project)? putProject,
+    TResult? Function(Project project, String nonProfitName)? putProject,
     TResult? Function(String id)? getProject,
     TResult? Function()? getProjects,
   }) {
-    return putProject?.call(project);
+    return putProject?.call(project, nonProfitName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Project project)? putProject,
+    TResult Function(Project project, String nonProfitName)? putProject,
     TResult Function(String id)? getProject,
     TResult Function()? getProjects,
     required TResult orElse(),
   }) {
     if (putProject != null) {
-      return putProject(project);
+      return putProject(project, nonProfitName);
     }
     return orElse();
   }
@@ -346,10 +355,12 @@ class _$PutProjectImpl implements _PutProject {
 }
 
 abstract class _PutProject implements ProjectEvent {
-  const factory _PutProject({required final Project project}) =
-      _$PutProjectImpl;
+  const factory _PutProject(
+      {required final Project project,
+      required final String nonProfitName}) = _$PutProjectImpl;
 
   Project get project;
+  String get nonProfitName;
   @JsonKey(ignore: true)
   _$$PutProjectImplCopyWith<_$PutProjectImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -420,7 +431,7 @@ class _$GetProjectImpl implements _GetProject {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Project project) putProject,
+    required TResult Function(Project project, String nonProfitName) putProject,
     required TResult Function(String id) getProject,
     required TResult Function() getProjects,
   }) {
@@ -431,7 +442,7 @@ class _$GetProjectImpl implements _GetProject {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Project project)? putProject,
+    TResult? Function(Project project, String nonProfitName)? putProject,
     TResult? Function(String id)? getProject,
     TResult? Function()? getProjects,
   }) {
@@ -442,7 +453,7 @@ class _$GetProjectImpl implements _GetProject {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Project project)? putProject,
+    TResult Function(Project project, String nonProfitName)? putProject,
     TResult Function(String id)? getProject,
     TResult Function()? getProjects,
     required TResult orElse(),
@@ -539,7 +550,7 @@ class _$GetProjectsImpl implements _GetProjects {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(Project project) putProject,
+    required TResult Function(Project project, String nonProfitName) putProject,
     required TResult Function(String id) getProject,
     required TResult Function() getProjects,
   }) {
@@ -550,7 +561,7 @@ class _$GetProjectsImpl implements _GetProjects {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(Project project)? putProject,
+    TResult? Function(Project project, String nonProfitName)? putProject,
     TResult? Function(String id)? getProject,
     TResult? Function()? getProjects,
   }) {
@@ -561,7 +572,7 @@ class _$GetProjectsImpl implements _GetProjects {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(Project project)? putProject,
+    TResult Function(Project project, String nonProfitName)? putProject,
     TResult Function(String id)? getProject,
     TResult Function()? getProjects,
     required TResult orElse(),

@@ -1,3 +1,4 @@
+import 'package:aidcode/data/model/non_profit.dart';
 import 'package:aidcode/presentation/screens/about/about_screen.dart';
 import 'package:aidcode/presentation/screens/nonprofit/nonprofits.dart';
 import 'package:aidcode/presentation/screens/project_details/project_details.dart';
@@ -85,7 +86,9 @@ class AppRoute {
                 path: _projectForm,
                 name: MyRoutes.projectForm.name,
                 child: (context, state) {
-                  return const ProjectFormScreen();
+                  final np = state.extra as NonProfit;
+
+                  return ProjectFormScreen(nonProfit: np);
                 },
               ),
             ],

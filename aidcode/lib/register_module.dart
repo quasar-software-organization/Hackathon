@@ -21,7 +21,7 @@ abstract class RegisterModule {
         baseUrl: url,
         headers: {
           'Authorization':
-              const String.fromEnvironment('LINKEDIN_AUTHORIZATION'),
+              'Bearer ${const String.fromEnvironment('LINKEDIN_AUTHORIZATION')}',
           'Content-Type': 'application/json',
           'X-RestLi-Protocol-Version': '2.0.0',
         },

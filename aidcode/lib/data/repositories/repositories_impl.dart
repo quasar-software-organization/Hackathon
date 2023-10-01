@@ -6,16 +6,21 @@ import 'package:aidcode/data/model/volunteer_project.dart';
 import 'package:aidcode/domain/repositories/repository.dart';
 import 'package:injectable/injectable.dart';
 
+import '../datasources/linkedin_datasource.dart';
+
 @Injectable(as: Repository)
 class RepositoryImpl implements Repository {
   final FirestoreService fs;
+  final LinkedinDatasource linkDS;
 
-  RepositoryImpl(this.fs);
+  RepositoryImpl(this.fs, this.linkDS);
 
   @override
-  Future<List<Project>> getNonProfitsProjects({required String nonProfitId}) async {
+  Future<List<Project>> getNonProfitsProjects(
+      {required String nonProfitId}) async {
     return await fs.getNonProfitProjects(nonProfitId);
   }
+
   @override
   Future<NonProfit> getNonProfit({required String nonProfitId}) async {
     return await fs.getNonProfit(nonProfitId);
@@ -48,9 +53,13 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<void> putProject({required Project project}) async {
-    // TODO: implement putProject
-    throw UnimplementedError();
+  Future<void> putProject(
+      {required Project project, required String nonProfitName}) async {
+    await linkDS.createPost(
+      title: project.name,
+      description: project.description,
+      nonProfitName: nonProfitName,
+    );
   }
 
   @override
@@ -60,7 +69,8 @@ class RepositoryImpl implements Repository {
   }
 
   @override
-  Future<void> putVolunteerProject({required VolunteerProject volunteerProject}) async {
+  Future<void> putVolunteerProject(
+      {required VolunteerProject volunteerProject}) async {
     // TODO: implement putVolunteerProject
     throw UnimplementedError();
   }

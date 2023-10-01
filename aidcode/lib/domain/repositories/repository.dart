@@ -10,11 +10,13 @@ abstract class Repository {
 
   Future<void> putVolunteer({required Volunteer volunteer});
 
-  Future<void> putVolunteerProject({required VolunteerProject volunteerProject});
+  Future<void> putVolunteerProject(
+      {required VolunteerProject volunteerProject});
 
   Future<List<Project>> getVolunteerProject({required String id});
 
-  Future<void> putProject({required Project project});
+  Future<void> putProject(
+      {required Project project, required String nonProfitName});
 
   Future<Project> getProject({required String id});
 
