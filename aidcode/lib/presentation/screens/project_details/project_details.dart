@@ -23,7 +23,7 @@ class ProjectDetails extends StatelessWidget {
     return Scaffold(body: BlocBuilder<ProjectBloc, ProjectState>(
       builder: (context, state) {
         final project =
-            state.projects.firstWhere((element) => element.nonProfitId == id);
+            state.projects.firstWhere((element) => element.id == id);
 
         return Padding(
           padding: const EdgeInsets.only(bottom: 8),
