@@ -3,6 +3,7 @@ import 'package:aidcode/presentation/screens/about/widgets/about_us_description.
 import 'package:aidcode/presentation/widgets/sliver_app_bar.dart';
 import 'package:aidcode/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({super.key});
@@ -12,27 +13,33 @@ class AboutUsScreen extends StatelessWidget {
     return Scaffold(
       appBar: appBar(
         context,
-        automaticallyImplyLeading: false,
         leading: const SizedBox(),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.only(right: 30.0),
             child: IconButton(
-              icon:
-                  const Icon(Icons.close, color: AppColor.secondary, size: 26),
+              icon: const Icon(
+                Icons.close,
+                color: AppColor.secondary,
+                size: 30,
+              ),
               onPressed: () {
-                Navigator.pop(context);
+                context.pop();
               },
             ),
           ),
         ],
       ),
       body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
+        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            children: [AboutUsDescription(), SizedBox.square(dimension: 20.0), LinksSection()],
+            children: [
+              AboutUsDescription(),
+              SizedBox.square(dimension: 35.0),
+              LinksSection()
+            ],
           ),
         ),
       ),
@@ -52,10 +59,26 @@ class LinksSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('Links', style: TextStyle(color: AppColor.primary, fontSize: 24, fontWeight: FontWeight.bold)),
-          linkValue(image: AppAssets.linkedin, link: 'linkedin.com/aidcode/repo'),
-          linkValue(image: AppAssets.facebook, link: 'facebook.com/aidcode/repo'),
-          linkValue(image: AppAssets.instagram, link: 'instagram.com/aidcode/repo'),
+          const Text(
+            'Links',
+            style: TextStyle(
+              color: AppColor.primary,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox.square(dimension: 10.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(AppAssets.linkedin),
+              const SizedBox.square(dimension: 25.0),
+              Image.asset(AppAssets.facebook),
+              const SizedBox.square(dimension: 25.0),
+              Image.asset(AppAssets.instagram),
+              const SizedBox.square(dimension: 25.0),
+            ],
+          ),
         ],
       ),
     );

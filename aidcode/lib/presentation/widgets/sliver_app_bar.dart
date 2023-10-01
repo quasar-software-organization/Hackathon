@@ -11,10 +11,14 @@ appBar(
   Widget? title,
   List<Widget>? actions,
 }) {
+  final size = MediaQuery.of(context).size;
   final canPop = Navigator.of(context).canPop();
+
   return AppBar(
     automaticallyImplyLeading: automaticallyImplyLeading,
+    toolbarHeight: 65.0,
     leading: SizedBox(
+      width: size.width * 0.15,
       child: leading == null && canPop
           ? IconButton(
               onPressed: onBack,
@@ -27,8 +31,7 @@ appBar(
     ),
     title: title ??
         Container(
-          height: 50,
-          margin: const EdgeInsets.only(top: 10),
+          height: 65,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
